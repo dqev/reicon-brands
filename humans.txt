@@ -1,0 +1,14 @@
+/* TEAM */
+  Project: Brands by Reicon.dev
+  Website: https://brands.reicon.dev
+  Description: 4,900+ free SVG brand icons collection
+
+/* THANKS */
+  Thanks to all contributors and the open-source community.
+
+/* TECHNOLOGY */
+  Built with: Node.js, HTML, CSS, JavaScript
+  Icons: SVG format with multiple color variants
+
+/* UPDATED */
+  Last generated: 2026-07-12

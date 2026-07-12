@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+
+<head>
+    <style>
+        :root {
+            --heading: #000;
+            --body: #000;
+            --body-muted: rgba(0, 0, 0, 0.45);
+            --background: #fff;
+            --card-bg: #f7f7f7;
+            --card-hover-bg: #f1f1f1;
+            --border: rgba(0, 0, 0, 0.08);
+            --font-primary: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --duration-smooth: .15s;
+            --ease-smooth: cubic-bezier(.19, 1, .22, 1);
+            --focus-color: rgba(0, 122, 255, 0.5);
+            --selection-color: #fff;
+            --selection-bg: #000;
+        }
+
+        @media (prefers-color-scheme:dark) {
+            :root {
+                --heading: #fff;
+                --body: #e4e4e7;
+                --body-muted: rgba(255, 255, 255, 0.5);
+                --background: #0e0e10;
+                --card-bg: #181818;
+                --card-hover-bg: #222225;
+                --border: rgba(255, 255, 255, 0.08);
+                --selection-color: #000;
+                --selection-bg: #fff;
+            }
+        }
+
+        html.dark {
+            --heading: #fff;
+            --body: #e4e4e7;
+            --body-muted: rgba(255, 255, 255, 0.5);
+            --background: #0e0e10;
+            --card-bg: #181818;
+            --card-hover-bg: #222225;
+            --border: rgba(255, 255, 255, 0.08);
+            --selection-color: #000;
+            --selection-bg: #fff;
+        }
+
+        html.light {
+            --heading: #000;
+            --body: #000;
+            --body-muted: rgba(0, 0, 0, 0.45);
+            --background: #fff;
+            --card-bg: #f7f7f7;
+            --card-hover-bg: #f1f1f1;
+            --border: rgba(0, 0, 0, 0.08);
+            --selection-color: #fff;
+            --selection-bg: #000;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            backface-visibility: hidden;
+        }
+
+        ::selection {
+            color: var(--selection-color);
+            background: var(--selection-bg);
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--focus-color);
+            outline-offset: 2px;
+        }
+
+        html,
+        body {
+            min-height: 100%;
+            color: var(--body);
+            background-color: var(--background);
+            transition: background-color var(--duration-smooth) var(--ease-smooth),
+                color var(--duration-smooth) var(--ease-smooth);
+        }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.5;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ── Page shell — matches main page layout ── */
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100svh;
+            padding: 80px 20px 60px;
+            width: 100%;
+        }
+
+        @media (max-width:600px) {
+            .page-container {
+                padding: 60px 15px 40px;
+            }
+        }
+
+        .content-col {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (max-width:768px) {
+            .content-col {
+                max-width: 340px;
+            }
+        }
+
+        @media (max-width:600px) {
+            .content-col {
+                max-width: 290px;
+            }
+        }
+
+        /* ── Back button — inside content column ── */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 9999px;
+            background: var(--border);
+            color: var(--body-muted);
+            text-decoration: none;
+            margin-bottom: 32px;
+            flex-shrink: 0;
+            transition: background var(--duration-smooth) var(--ease-smooth),
+                color var(--duration-smooth) var(--ease-smooth),
+                transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .back-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .back-btn:hover {
+            color: var(--heading);
+            transform: scale(1.08);
+        }
+
+        .back-btn:active {
+            transform: scale(0.93);
+        }
+
+        /* ── Heading ── */
+        .page-heading {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--body-muted);
+            margin-bottom: 16px;
+        }
+
+        /* ── Grid — exact same as main page ── */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            width: 100%;
+        }
+
+        @media (max-width:768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* odd last child stays centered on wide screens */
+        @media (min-width:769px) {
+            .projects-grid a:last-child:nth-child(odd) {
+                grid-column: 1 / span 2;
+                justify-self: center;
+                width: calc(50% - 8px);
+            }
+        }
+
+        /* ── Project card — copy of main page .project-card ── */
+        .project-card {
+            position: relative;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 32px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 16px;
+            text-decoration: none;
+            color: inherit;
+            transition: background-color var(--duration-smooth) var(--ease-smooth);
+        }
+
+        .project-card:hover {
+            background-color: var(--card-hover-bg);
+        }
+
+        .project-card-icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            background-color: transparent;
+            border-radius: 10px;
+        }
+
+        .project-card-image {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .project-card-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .project-card-info h3 {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .project-card-desc {
+            font-size: 11px;
+            color: var(--body-muted);
+            line-height: 1.5;
+            max-width: 240px;
+        }
+
+        @media (max-width:600px) {
+            .project-card {
+                padding: 24px 16px 20px;
+                gap: 12px;
+            }
+
+            .project-card-icon-container {
+                width: 48px;
+                height: 48px;
+            }
+
+            .project-card-image {
+                width: 32px;
+                height: 32px;
+            }
+
+            .project-card-desc {
+                font-size: 10.5px;
+                max-width: 200px;
+                line-height: 1.4;
+            }
+        }
+
+        /* ── Theme helpers ── */
+        .theme-dark-only {
+            display: none;
+        }
+
+        @media (prefers-color-scheme:dark) {
+            html:not(.light) .theme-light-only {
+                display: none;
+            }
+
+            html:not(.light) .theme-dark-only {
+                display: block;
+            }
+        }
+
+        html.dark .theme-light-only {
+            display: none;
+        }
+
+        html.dark .theme-dark-only {
+            display: block;
+        }
+
+        html.light .theme-light-only {
+            display: block;
+        }
+
+        html.light .theme-dark-only {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="content-col">
+
+            <a href="/" class="back-btn" aria-label="Back to home">
+                <svg aria-hidden="true" fill="none" height="24" viewBox="0 0 24 24" width="24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M9.70711 4.70711C10.0976 4.31658 10.0976 3.68342 9.70711 3.29289C9.31658 2.90237 8.68342 2.90237 8.29289 3.29289L3.29289 8.29289C2.90237 8.68342 2.90237 9.31658 3.29289 9.70711L8.29289 14.7071C8.68342 15.0976 9.31658 15.0976 9.70711 14.7071C10.0976 14.3166 10.0976 13.6834 9.70711 13.2929L6.41421 10H10.4C12.0967 10 13.309 10.0008 14.2594 10.0784C15.198 10.1551 15.7927 10.3018 16.27 10.545C17.2108 11.0243 17.9757 11.7892 18.455 12.73C18.6982 13.2073 18.8449 13.802 18.9216 14.7406C18.9992 15.691 19 16.9033 19 18.6V20C19 20.5523 19.4477 21 20 21C20.5523 21 21 20.5523 21 20V18.5556C21 16.913 21 15.6191 20.9149 14.5778C20.8281 13.5154 20.6478 12.6283 20.237 11.8221C19.5659 10.5049 18.4951 9.43407 17.1779 8.76295C16.3717 8.35217 15.4846 8.17186 14.4222 8.08507C13.3809 7.99999 12.087 7.99999 10.4444 8L6.41421 8L9.70711 4.70711Z"
+                        fill="currentColor" />
+                </svg>
+            </a>
+
+            <h1 class="page-heading">Projects :</h1>
+
+            <div class="projects-grid">
+
+                <!-- Reicon -->
+                <a href="https://reicon.dev" target="_blank" rel="noopener noreferrer" class="project-card">
+                    <div class="project-card-icon-container">
+                        <img src="/assets/reicon-light.webp" alt="Reicon" class="project-card-image theme-light-only" />
+                        <img src="/assets/reicon-dark.webp" alt="Reicon" class="project-card-image theme-dark-only" />
+                    </div>
+                    <div class="project-card-info">
+                        <h3>Reicon</h3>
+                        <p class="project-card-desc">An open-source library of 2,700+ handcrafted SVG icons.</p>
+                    </div>
+                </a>
+
+                <!-- LessBytes -->
+                <a href="https://lessbytes.vercel.app" target="_blank" rel="noopener noreferrer" class="project-card">
+                    <div class="project-card-icon-container">
+                        <img src="/assets/lessbytes-light.svg" alt="LessBytes"
+                            class="project-card-image theme-light-only" />
+                        <img src="/assets/lessbytes-dark.svg" alt="LessBytes"
+                            class="project-card-image theme-dark-only" />
+                    </div>
+                    <div class="project-card-info">
+                        <h3>LessBytes</h3>
+                        <p class="project-card-desc">Visually lossless image compression using SSIM-guided binary
+                            search.</p>
+                    </div>
+                </a>
+
+                <!-- FluidShader -->
+                <a href="https://fluidshader.vercel.app" target="_blank" rel="noopener noreferrer" class="project-card">
+                    <div class="project-card-icon-container">
+                        <img src="/assets/fluid-shader.webp" alt="FluidShader" class="project-card-image" />
+                    </div>
+                    <div class="project-card-info">
+                        <h3>FluidShader</h3>
+                        <p class="project-card-desc">Real-time WebGL fluid gradient editor and code generator.</p>
+                    </div>
+                </a>
+
+                <!-- Zapp -->
+                <a href="https://zapp.devchauhan.in" target="_blank" rel="noopener noreferrer" class="project-card">
+                    <div class="project-card-icon-container">
+                        <img src="/assets/zapp.webp" alt="Zapp" class="project-card-image" />
+                    </div>
+                    <div class="project-card-info">
+                        <h3>Zapp</h3>
+                        <p class="project-card-desc">Secure, browser-native P2P file &amp; clipboard sharing.</p>
+                    </div>
+                </a>
+
+                <!-- Brands -->
+                <a href="https://www.figma.com/community/plugin/1654796689083254905" target="_blank"
+                    rel="noopener noreferrer" class="project-card">
+                    <div class="project-card-icon-container">
+                        <img src="/assets/brands.webp" alt="Brands" class="project-card-image"
+                            style="border-radius:8px" />
+                    </div>
+                    <div class="project-card-info">
+                        <h3>Brands</h3>
+                        <p class="project-card-desc">Add 300+ brand, social &amp; tech icons to your Figma designs in
+                            seconds.</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

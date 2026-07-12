@@ -1,0 +1,163 @@
+{
+  "Google": [
+    "Android Auto",
+    "Chrome Web Store",
+    "Cloud Firestore",
+    "Crowdsource",
+    "Dialogflow",
+    "Files",
+    "Firebase",
+    "Gemini",
+    "Google",
+    "YouTube"
+  ],
+  "Microsoft": [
+    ".NET",
+    "C#",
+    "Edge",
+    "Microsoft",
+    "Microsoft 365 Copilot",
+    "Microsoft Access",
+    "Microsoft Azure",
+    "Microsoft Excel",
+    "Microsoft Loop",
+    "Microsoft Office"
+  ],
+  "Apple": [],
+  "Amazon": [],
+  "Meta": [],
+  "OpenAI": [],
+  "Anthropic": [],
+  "Cloud Platforms": [],
+  "Kubernetes & Containers": [],
+  "CI/CD": [],
+  "E-commerce": [
+    "Amazon",
+    "Amazon Kindle",
+    "Amazon Prime",
+    "Coupang",
+    "eshopOS",
+    "JACO",
+    "Office Depot",
+    "Ozon",
+    "Staples",
+    "Ticket Tailor"
+  ],
+  "Payment": [
+    "AbacatePay",
+    "Afterpay",
+    "Alipay",
+    "Alpaca",
+    "Contactless Payment",
+    "Dodo Payments",
+    "FamPay",
+    "Formance",
+    "Klarna",
+    "Liberapay"
+  ],
+  "Relational Databases": [],
+  "NoSQL Databases": [],
+  "Search": [],
+  "Programming Languages": [],
+  "Frontend Frameworks": [],
+  "Frontend Tools": [],
+  "CSS Frameworks": [],
+  "Video Streaming": [],
+  "Music Streaming": [],
+  "AI Models": [],
+  "AI Platforms": [],
+  "Social Media": [
+    "Jinritoutiao"
+  ],
+  "Banking": [],
+  "Cryptocurrency": [],
+  "Cryptocurrency Exchanges": [],
+  "Investment": [
+    "Onex"
+  ],
+  "Airlines": [],
+  "Hotels": [],
+  "Travel Booking": [],
+  "Automotive": [
+    "Acura",
+    "AMG",
+    "Aston Martin",
+    "Audi",
+    "Bentley",
+    "BMW",
+    "Bugatti",
+    "Cadillac",
+    "Car Throttle",
+    "Chevrolet"
+  ],
+  "Fast Food": [],
+  "Restaurants": [],
+  "Beverages": [],
+  "Retail": [],
+  "Luxury Brands": [],
+  "Sports": [
+    "ESPN",
+    "Minnesota Wild"
+  ],
+  "Gaming": [
+    "Aternos",
+    "Bet365",
+    "Bethesda Game Studios",
+    "Clickteam Fusion",
+    "Dungeons & Dragons",
+    "EA",
+    "Electronic Arts",
+    "Godot",
+    "Google Play Games",
+    "Logitech G"
+  ],
+  "Esports": [],
+  "News": [
+    "BBC",
+    "Jinritoutiao",
+    "U.S. News & World Report"
+  ],
+  "Podcasting": [],
+  "VPN": [
+    "Proton VPN"
+  ],
+  "Security Software": [],
+  "Password Managers": [],
+  "Office Suites": [],
+  "Project Management": [],
+  "Communication": [
+    "BT",
+    "Cinny",
+    "Cisco AnyConnect",
+    "Cisco Jabber",
+    "Connect",
+    "Etisalat",
+    "JACO",
+    "Matrix",
+    "NTT Docomo",
+    "Proton Meet"
+  ],
+  "Design Tools": [
+    "Aceternity"
+  ],
+  "Video Editing": [],
+  "3D Modeling": [],
+  "Analytics": [
+    "Alpha Vantage",
+    "Amplitude",
+    "Bklit",
+    "Braze",
+    "Customer.io",
+    "Dagster",
+    "Domo",
+    "Drift",
+    "Experience Platform",
+    "FullStory"
+  ],
+  "Data Visualization": [],
+  "Data Warehousing": [],
+  "Online Learning": [],
+  "Language Learning": [],
+  "Telemedicine": [],
+  "Fitness": []
+}

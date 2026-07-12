@@ -1,0 +1,58 @@
+<svg
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+  <style>*:not([fill="none"]):not([stroke="none"]){fill:#000000}</style>
+      <title>Luma</title>
+      <path d="M2 5.999L12.392 0v24L2 18V5.999z" fill="#000000" />
+      <path d="M12.392 24L2 18l10.392-6 10.393 6-10.393 6z" fill="#000000" />
+      <path d="M12.392 24L2 18l10.392-6 10.393 6-10.393 6z" fill="#000000" />
+      <path
+        d="M2 5.999L12.392 0v24L2 18V5.999z"
+        fill="#000000"
+      />
+      <path
+        d="M12.392 24L2 18l10.392-6 10.393 6-10.393 6z"
+        fill="#000000"
+      />
+      <path
+        d="M2 5.999L12.392 0v24L2 18V5.999z"
+        fill="#000000"
+      />
+      <defs>
+        <linearGradient gradientUnits="userSpaceOnUse" id="grad-a" x1="2" x2="22.785" y1="18" y2="18">
+          <stop stop-color="#000000" />
+          <stop offset="1" stop-color="#000000" />
+        </linearGradient>
+        <linearGradient gradientUnits="userSpaceOnUse" id="grad-b" x1="2" x2="22.785" y1="18" y2="18">
+          <stop stop-color="#000000" />
+          <stop offset="1" stop-color="#000000" />
+        </linearGradient>
+        <linearGradient
+          gradientUnits="userSpaceOnUse"
+          id="grad-c"
+          x1="13.748"
+          x2="4.672"
+          y1="22.642"
+          y2="3.745"
+        >
+          <stop stop-color="#000000" />
+          <stop offset="1" stop-color="#000000" />
+        </linearGradient>
+        <linearGradient gradientUnits="userSpaceOnUse" id="grad-d" x1="2" x2="22.785" y1="18" y2="18">
+          <stop stop-color="#000000" />
+          <stop offset="1" stop-color="#000000" />
+        </linearGradient>
+        <linearGradient
+          gradientUnits="userSpaceOnUse"
+          id="grad-e"
+          x1="13.748"
+          x2="4.672"
+          y1="22.642"
+          y2="3.745"
+        >
+          <stop stop-color="#000000" />
+          <stop offset="1" stop-color="#000000" />
+        </linearGradient>
+      </defs>
+    </svg>

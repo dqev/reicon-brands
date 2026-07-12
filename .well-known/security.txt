@@ -1,0 +1,7 @@
+# Security Contact
+# https://brands.reicon.dev
+
+Contact: https://reicon.dev
+Preferred-Languages: en
+Canonical: https://brands.reicon.dev/.well-known/security.txt
+Policy: https://reicon.dev/security

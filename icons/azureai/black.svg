@@ -1,0 +1,83 @@
+<svg
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+  <style>*:not([fill="none"]):not([stroke="none"]){fill:#000000}</style>
+      <title>AzureAI</title>
+      <path
+        clip-rule="evenodd"
+        d="M16.233 0c.713 0 1.345.551 1.572 1.329.227.778 1.555 5.59 1.555 5.59v9.562h-4.813L14.645 0h1.588z"
+        fill="#000000"
+        fill-rule="evenodd"
+      />
+      <path
+        d="M23.298 7.47c0-.34-.275-.6-.6-.6h-2.835a3.617 3.617 0 00-3.614 3.615v5.996h3.436a3.617 3.617 0 003.613-3.614V7.47z"
+        fill="#000000"
+      />
+      <path
+        clip-rule="evenodd"
+        d="M16.233 0a.982.982 0 00-.989.989l-.097 18.198A4.814 4.814 0 0110.334 24H1.6a.597.597 0 01-.567-.794l7-19.981A4.819 4.819 0 0112.57 0h3.679-.016z"
+        fill="#000000"
+        fill-rule="evenodd"
+      />
+      <defs>
+        <linearGradient
+          gradientUnits="userSpaceOnUse"
+          id="grad-a"
+          x1="18.242"
+          x2="14.191"
+          y1="16.837"
+          y2=".616"
+        >
+          <stop stop-color="#000000" />
+          <stop offset=".09" stop-color="#000000" />
+          <stop offset=".18" stop-color="#000000" />
+          <stop offset=".27" stop-color="#000000" />
+          <stop offset=".34" stop-color="#000000" />
+          <stop offset=".4" stop-color="#000000" />
+          <stop offset=".5" stop-color="#000000" />
+          <stop offset=".61" stop-color="#000000" />
+          <stop offset=".72" stop-color="#000000" />
+          <stop offset=".83" stop-color="#000000" />
+          <stop offset=".95" stop-color="#000000" />
+          <stop offset="1" stop-color="#000000" />
+        </linearGradient>
+        <linearGradient
+          gradientUnits="userSpaceOnUse"
+          id="grad-b"
+          x1="19.782"
+          x2="19.782"
+          y1=".34"
+          y2="23.222"
+        >
+          <stop stop-color="#000000" />
+          <stop offset=".08" stop-color="#000000" />
+          <stop offset=".19" stop-color="#000000" />
+          <stop offset=".3" stop-color="#000000" />
+          <stop offset=".41" stop-color="#000000" />
+          <stop offset=".54" stop-color="#000000" />
+          <stop offset=".67" stop-color="#000000" />
+          <stop offset=".81" stop-color="#000000" />
+          <stop offset="1" stop-color="#000000" />
+        </linearGradient>
+        <linearGradient
+          gradientUnits="userSpaceOnUse"
+          id="grad-c"
+          x1="18.404"
+          x2="3.236"
+          y1=".859"
+          y2="25.183"
+        >
+          <stop stop-color="#000000" />
+          <stop offset=".05" stop-color="#000000" />
+          <stop offset=".11" stop-color="#000000" />
+          <stop offset=".18" stop-color="#000000" />
+          <stop offset=".25" stop-color="#000000" />
+          <stop offset=".33" stop-color="#000000" />
+          <stop offset=".42" stop-color="#000000" />
+          <stop offset=".54" stop-color="#000000" />
+          <stop offset=".68" stop-color="#000000" />
+          <stop offset="1" stop-color="#000000" />
+        </linearGradient>
+      </defs>
+    </svg>

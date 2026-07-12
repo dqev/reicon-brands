@@ -1,0 +1,185 @@
+{
+  "schema": "icons-parameters-v1",
+  "description": "Schema definition and dataset metrics of the icons.json file. Used to help LLMs and configuration scripts discover all available metadata and structural parameters in this repository.",
+  "totalIcons": 4907,
+  "parameters": {
+    "name": {
+      "type": "string",
+      "description": "The clean English-only display name of the brand/icon (non-ASCII characters are stripped).",
+      "example": "Adobe"
+    },
+    "hex": {
+      "type": "string | array<string>",
+      "description": "Brand color(s) as a 6-character hex code without the leading hash symbol. Can be a string for a single color or an array of strings for multi-colored brand elements.",
+      "example": "EB1000"
+    },
+    "categories": {
+      "type": "array<string>",
+      "description": "Categorization tags for sorting and filtering the icons.",
+      "allValues": [
+        "AI",
+        "Accessibility",
+        "Advertising",
+        "Agency",
+        "Analytics",
+        "App Services",
+        "Auth",
+        "Authentication",
+        "Automation",
+        "Automotive",
+        "Aviation",
+        "Booking",
+        "Browser",
+        "Business",
+        "CMS",
+        "Canonical",
+        "Caravaning",
+        "Cloud",
+        "Communication",
+        "Community",
+        "Compiler",
+        "Config",
+        "Construction",
+        "Crypto",
+        "Cybersecurity",
+        "DEX",
+        "Data",
+        "Database",
+        "Design",
+        "DevOps",
+        "DevTool",
+        "Developer Tools",
+        "Devtool",
+        "E-commerce",
+        "Ecommerce",
+        "Editor",
+        "Education",
+        "Energy",
+        "Entertainment",
+        "Exchange",
+        "File Sharing",
+        "Finance",
+        "Food",
+        "Food & Beverage",
+        "Framework",
+        "Gaming",
+        "Google",
+        "Google 2026",
+        "HR",
+        "Hardware",
+        "Health",
+        "Healthcare",
+        "Hospitality",
+        "Hosting",
+        "Infrastructure",
+        "Insurance",
+        "Investment",
+        "IoT",
+        "Jewelry",
+        "Language",
+        "Ledger",
+        "Library",
+        "Linux",
+        "Livestreaming",
+        "Logistics",
+        "Marketplace",
+        "Media",
+        "Microsoft",
+        "Mobile App",
+        "Monitoring",
+        "Monorepo",
+        "Music",
+        "Network",
+        "Networking",
+        "News",
+        "Non-profit",
+        "Nuxt",
+        "OS",
+        "Other",
+        "Payment",
+        "Photography",
+        "Platform",
+        "Privacy",
+        "Productivity",
+        "Real Estate",
+        "Recognition",
+        "SaaS",
+        "Security",
+        "Self-Hosted",
+        "Services",
+        "Shopping",
+        "Social",
+        "Social Media",
+        "Software",
+        "Split",
+        "Sports",
+        "Storage",
+        "Telecommunications",
+        "Testing",
+        "Transportation",
+        "Travel",
+        "VPN",
+        "Vercel",
+        "Voice",
+        "VoidZero",
+        "Web",
+        "Web3",
+        "application",
+        "model",
+        "provider"
+      ]
+    },
+    "variants": {
+      "type": "object",
+      "description": "Relative SVG path mappings for each visual configuration of the icon. Paths resolve to folders within the  directory.",
+      "keys": {
+        "default": {
+          "description": "The default fallback SVG layout for the brand.",
+          "count": 4907
+        },
+        "black": {
+          "description": "Solid black (#000000) filled variant of the brand icon.",
+          "count": 4907
+        },
+        "white": {
+          "description": "Solid white (#ffffff) filled variant of the brand icon.",
+          "count": 4907
+        },
+        "brand": {
+          "description": "Icon paths dynamically filled using the primary brand hex color.",
+          "count": 4907
+        },
+        "text": {
+          "description": "Default text-only or logotype SVG (uses default fills / currentColor).",
+          "count": 571
+        },
+        "textBlack": {
+          "description": "Solid black logotype SVG variant.",
+          "count": 401
+        },
+        "textWhite": {
+          "description": "Solid white logotype SVG variant.",
+          "count": 405
+        },
+        "textBrand": {
+          "description": "Logotype paths filled using the primary brand hex color.",
+          "count": 303
+        }
+      },
+      "pathFormat": "/icons/{slug}/{variant}.svg"
+    },
+    "url": {
+      "type": "string",
+      "description": "Verified official URL of the brand website.",
+      "example": "https://www.adobe.com/"
+    },
+    "collection": {
+      "type": "string",
+      "description": "Categorical group distinguishing the collection origin.",
+      "allValues": [
+        "brands",
+        "community"
+      ]
+    }
+  }
+}
