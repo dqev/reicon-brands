@@ -857,20 +857,22 @@
                 canvas.width = size;
                 canvas.height = size;
                 var ctx = canvas.getContext('2d');
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
                 var img = new Image();
                 var blob = new Blob([svgText], { type: 'image/svg+xml;charset=utf-8' });
                 var url = window.URL.createObjectURL(blob);
                 img.onload = function () {
                     ctx.clearRect(0, 0, size, size);
-                    var s = Math.min(size / img.width, size / img.height) * 0.8;
-                    var w = img.width * s;
-                    var h = img.height * s;
-                    ctx.drawImage(img, (size - w) / 2, (size - h) / 2, w, h);
+                    var s = Math.min(size / img.width, size / img.height);
+                    var w = Math.round(img.width * s);
+                    var h = Math.round(img.height * s);
+                    ctx.drawImage(img, Math.round((size - w) / 2), Math.round((size - h) / 2), w, h);
                     window.URL.revokeObjectURL(url);
                     if (format === 'png') {
                         canvas.toBlob(function (b) { resolve(b); }, 'image/png');
                     } else {
-                        canvas.toBlob(function (b) { resolve(b); }, 'image/webp', 0.92);
+                        canvas.toBlob(function (b) { resolve(b); }, 'image/webp', 0.95);
                     }
                 };
                 img.onerror = function () { reject(new Error('Image load failed')); };
