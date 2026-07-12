@@ -33,35 +33,7 @@
 
     <style>
         :root {
-            --heading: #000;
-            --body: #000;
-            --body-muted: rgba(0, 0, 0, 0.45);
-            --background: #fff;
-            --card-bg: #f7f7f7;
-            --card-hover-bg: #f1f1f1;
-            --border: rgba(0, 0, 0, 0.08);
-            --font-primary: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            --duration-smooth: .15s;
-            --ease-smooth: cubic-bezier(.19, 1, .22, 1);
-            --focus-color: rgba(0, 122, 255, 0.5);
-            --selection-color: #fff;
-            --selection-bg: #000;
-            --accent: #73BA25;
-        }
-        @media (prefers-color-scheme:dark) {
-            :root {
-                --heading: #fff;
-                --body: #e4e4e7;
-                --body-muted: rgba(255, 255, 255, 0.5);
-                --background: #0e0e10;
-                --card-bg: #181818;
-                --card-hover-bg: #222225;
-                --border: rgba(255, 255, 255, 0.08);
-                --selection-color: #000;
-                --selection-bg: #fff;
-            }
-        }
-        html.dark {
+            color-scheme: dark;
             --heading: #fff;
             --body: #e4e4e7;
             --body-muted: rgba(255, 255, 255, 0.5);
@@ -69,19 +41,13 @@
             --card-bg: #181818;
             --card-hover-bg: #222225;
             --border: rgba(255, 255, 255, 0.08);
+            --font-primary: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --duration-smooth: .15s;
+            --ease-smooth: cubic-bezier(.19, 1, .22, 1);
+            --focus-color: rgba(0, 122, 255, 0.5);
             --selection-color: #000;
             --selection-bg: #fff;
-        }
-        html.light {
-            --heading: #000;
-            --body: #000;
-            --body-muted: rgba(0, 0, 0, 0.45);
-            --background: #fff;
-            --card-bg: #f7f7f7;
-            --card-hover-bg: #f1f1f1;
-            --border: rgba(0, 0, 0, 0.08);
-            --selection-color: #fff;
-            --selection-bg: #000;
+            --accent: #73BA25;
         }
         *,
         *::before,
@@ -471,10 +437,6 @@
         .action-button:hover { background-color: var(--card-hover-bg); transform: translateY(-1px); }
         .action-button-primary { background: var(--heading); color: var(--background); border-color: var(--heading); }
         .action-button-primary:hover { opacity: 0.85; transform: translateY(-1px); background: var(--heading); }
-        html.dark .action-button-primary:hover { opacity: 0.8; }
-        @media (prefers-color-scheme:dark) {
-            .action-button-primary:hover { opacity: 0.8; }
-        }
         .action-button:active { transform: scale(0.97) translateY(0); }
 
         .tool-section {

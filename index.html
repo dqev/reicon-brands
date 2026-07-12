@@ -60,19 +60,20 @@
     <style>
         /* ── Core Theme Variables (Directly from refrence.html) ── */
         :root {
-            --heading: #000;
-            --body: #000;
-            --body-muted: rgba(0, 0, 0, 0.45);
-            --background: #fff;
-            --card-bg: #f7f7f7;
-            --card-hover-bg: #f1f1f1;
-            --border: rgba(0, 0, 0, 0.08);
+            color-scheme: dark;
+            --heading: #fff;
+            --body: #e4e4e7;
+            --body-muted: rgba(255, 255, 255, 0.5);
+            --background: #0e0e10;
+            --card-bg: #181818;
+            --card-hover-bg: #222225;
+            --border: rgba(255, 255, 255, 0.08);
             --font-primary: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
             --duration-smooth: .15s;
             --ease-smooth: cubic-bezier(.19, 1, .22, 1);
             --focus-color: rgba(0, 122, 255, 0.15);
-            --selection-color: #fff;
-            --selection-bg: #000;
+            --selection-color: #000;
+            --selection-bg: #fff;
             --blue-200: #93c5fd;
             --blue-300: #60a5fa;
             --text-purple: #a855f7;
@@ -84,44 +85,6 @@
             --blueberry-300: #6366f1;
             --white-100: #ffffff;
             --index-5: 9999;
-        }
-
-        @media (prefers-color-scheme:dark) {
-            :root {
-                --heading: #fff;
-                --body: #e4e4e7;
-                --body-muted: rgba(255, 255, 255, 0.5);
-                --background: #0e0e10;
-                --card-bg: #181818;
-                --card-hover-bg: #222225;
-                --border: rgba(255, 255, 255, 0.08);
-                --selection-color: #000;
-                --selection-bg: #fff;
-            }
-        }
-
-        html.dark {
-            --heading: #fff;
-            --body: #e4e4e7;
-            --body-muted: rgba(255, 255, 255, 0.5);
-            --background: #0e0e10;
-            --card-bg: #181818;
-            --card-hover-bg: #222225;
-            --border: rgba(255, 255, 255, 0.08);
-            --selection-color: #000;
-            --selection-bg: #fff;
-        }
-
-        html.light {
-            --heading: #000;
-            --body: #000;
-            --body-muted: rgba(0, 0, 0, 0.45);
-            --background: #fff;
-            --card-bg: #f7f7f7;
-            --card-hover-bg: #f1f1f1;
-            --border: rgba(0, 0, 0, 0.08);
-            --selection-color: #fff;
-            --selection-bg: #000;
         }
 
         *,
