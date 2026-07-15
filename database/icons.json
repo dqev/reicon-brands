@@ -80030,5 +80030,21 @@
     },
     "url": "https://reicon.dev",
     "collection": "brands"
+  },
+  {
+    "name": "Hugeicons",
+    "hex": "7CCE24",
+    "categories": [
+      "Design",
+      "Icon"
+    ],
+    "variants": {
+      "default": "/icons/hugeicons/default.svg",
+      "brand": "/icons/hugeicons/brand.svg",
+      "black": "/icons/hugeicons/black.svg",
+      "white": "/icons/hugeicons/white.svg"
+    },
+    "url": "https://hugeicons.com",
+    "collection": "brands"
   }
 ]
