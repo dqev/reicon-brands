@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://brands.reicon.dev/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://brands.reicon.dev/icon/dotenv/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://brands.reicon.dev/icon/dotnet/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://brands.reicon.dev/icon/net/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://brands.reicon.dev/icon/dotnet/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://brands.reicon.dev/icon/dotenv/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://brands.reicon.dev/icon/e/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://brands.reicon.dev/icon/1dot1dot1dot1/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://brands.reicon.dev/icon/01dotai/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
@@ -4910,4 +4910,5 @@
   <url><loc>https://brands.reicon.dev/icon/zyte/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://brands.reicon.dev/icon/antigravity/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://brands.reicon.dev/icon/reicon/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://brands.reicon.dev/icon/hugeicons/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
 </urlset>

@@ -6,14 +6,14 @@
 
 # Collection Overview
 title: Brands by Reicon.dev
-description: A collection of 4909 free SVG brand icons available in default, brand, black, and white variants.
+description: A collection of 4910 free SVG brand icons available in default, brand, black, and white variants.
 website: https://brands.reicon.dev
-total_icons: 4909
+total_icons: 4910
 
 # Icon Pages
-https://brands.reicon.dev/icon/dotenv/
-https://brands.reicon.dev/icon/dotnet/
 https://brands.reicon.dev/icon/net/
+https://brands.reicon.dev/icon/dotnet/
+https://brands.reicon.dev/icon/dotenv/
 https://brands.reicon.dev/icon/e/
 https://brands.reicon.dev/icon/1dot1dot1dot1/
 https://brands.reicon.dev/icon/01dotai/
@@ -4920,3 +4920,4 @@ https://brands.reicon.dev/icon/zyft/
 https://brands.reicon.dev/icon/zyte/
 https://brands.reicon.dev/icon/antigravity/
 https://brands.reicon.dev/icon/reicon/
+https://brands.reicon.dev/icon/hugeicons/

@@ -1,19 +1,19 @@
 [
   {
-    "name": ".ENV",
-    "hex": "ECD53F",
+    "name": ".NET (Mono)",
+    "hex": "0664A8",
     "categories": [
-      "Config",
-      "Library"
+      "Language",
+      "DevTool"
     ],
     "variants": {
-      "default": "/icons/dotenv/default.svg",
-      "brand": "/icons/dotenv/brand.svg",
-      "black": "/icons/dotenv/black.svg",
-      "white": "/icons/dotenv/white.svg"
+      "default": "/icons/net/default.svg",
+      "brand": "/icons/net/brand.svg",
+      "black": "/icons/net/black.svg",
+      "white": "/icons/net/white.svg"
     },
-    "url": "https://github.com/motdotla/dotenv",
-    "collection": "brands"
+    "url": "https://dotnet.microsoft.com",
+    "collection": "community"
   },
   {
     "name": ".NET",
@@ -32,20 +32,20 @@
     "collection": "brands"
   },
   {
-    "name": ".NET (Mono)",
-    "hex": "0664A8",
+    "name": ".ENV",
+    "hex": "ECD53F",
     "categories": [
-      "Language",
-      "DevTool"
+      "Config",
+      "Library"
     ],
     "variants": {
-      "default": "/icons/net/default.svg",
-      "brand": "/icons/net/brand.svg",
-      "black": "/icons/net/black.svg",
-      "white": "/icons/net/white.svg"
+      "default": "/icons/dotenv/default.svg",
+      "brand": "/icons/dotenv/brand.svg",
+      "black": "/icons/dotenv/black.svg",
+      "white": "/icons/dotenv/white.svg"
     },
-    "url": "https://dotnet.microsoft.com",
-    "collection": "community"
+    "url": "https://github.com/motdotla/dotenv",
+    "collection": "brands"
   },
   {
     "name": "/e/",

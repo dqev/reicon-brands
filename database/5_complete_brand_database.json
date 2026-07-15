@@ -2084,6 +2084,7 @@
       "Huawei",
       "HuaweiCloud",
       "HubSpot",
+      "Hugeicons",
       "Hugging Face",
       "Hugo",
       "Hulu",
@@ -5100,15 +5101,15 @@
     "Fitness": []
   },
   "stats": {
-    "totalBrands": 4909,
-    "totalCategories": 111,
+    "totalBrands": 4910,
+    "totalCategories": 112,
     "brandsByCategory": {
-      "Config": 2,
-      "Library": 149,
-      "Microsoft": 21,
-      "Framework": 120,
       "Language": 96,
       "DevTool": 156,
+      "Microsoft": 21,
+      "Framework": 120,
+      "Config": 2,
+      "Library": 149,
       "Software": 3382,
       "Platform": 2427,
       "AI": 278,
@@ -5120,7 +5121,7 @@
       "Payment": 29,
       "Finance": 117,
       "Shopping": 32,
-      "Design": 114,
+      "Design": 115,
       "Hardware": 55,
       "Design Tools": 1,
       "Editor": 43,
@@ -5213,7 +5214,8 @@
       "DEX": 1,
       "Voice": 1,
       "Hospitality": 1,
-      "Travel": 2
+      "Travel": 2,
+      "Icon": 1
     }
   }
 }

@@ -1,6 +1,6 @@
 # Brands Icon Collection
 
-Total icons: 4909
+Total icons: 4910
 Format: SVG
 Variants: default, brand, black, white
 Source: https://brands.reicon.dev
@@ -1935,6 +1935,7 @@ Source: https://brands.reicon.dev
 - [huawei-cloud](https://brands.reicon.dev/icon/huawei-cloud/)
 - [huaweicloud](https://brands.reicon.dev/icon/huaweicloud/)
 - [hubspot](https://brands.reicon.dev/icon/hubspot/)
+- [hugeicons](https://brands.reicon.dev/icon/hugeicons/)
 - [hugging-face](https://brands.reicon.dev/icon/hugging-face/)
 - [hugo](https://brands.reicon.dev/icon/hugo/)
 - [hulu](https://brands.reicon.dev/icon/hulu/)
