@@ -1,0 +1,11 @@
+# Ignore non-web files for Cloudflare Pages asset validation
+.git/
+node_modules/
+scripts/
+.vscode/
+.idea/
+.gemini/
+*.md
+package.json
+package-lock.json
+*.log
