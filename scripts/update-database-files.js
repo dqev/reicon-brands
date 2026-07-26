@@ -19,6 +19,11 @@ function syncDatabase() {
   fs.writeFileSync(iconsPath, JSON.stringify(icons, null, 2), 'utf8');
   console.log(`Sorted icons.json (${icons.length} entries)`);
 
+  // Write minified version of icons.json
+  const minIconsPath = path.join(DB_DIR, 'icons.min.json');
+  fs.writeFileSync(minIconsPath, JSON.stringify(icons), 'utf8');
+  console.log(`Generated icons.min.json (${icons.length} entries, minified)`);
+
   // 2. Generate database/brand_names.json
   const brandNamesPath = path.join(DB_DIR, 'brand_names.json');
   const brandNames = icons.map(i => i.name).sort();

@@ -1,0 +1,9 @@
+# Cloudflare Pages Configuration
+name = "brands-reicon"
+pages_build_output_dir = "."
+
+[build]
+command = "node scripts/generate-seo-files.js && node scripts/generate-icon-pages.js"
+
+[site]
+bucket = "."

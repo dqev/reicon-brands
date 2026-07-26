@@ -80046,5 +80046,86 @@
     },
     "url": "https://hugeicons.com",
     "collection": "brands"
+  },
+  {
+    "name": "Arc Fintech",
+    "hex": "000000",
+    "categories": [
+      "Finance",
+      "Software"
+    ],
+    "variants": {
+      "default": "/icons/arc-fintech/default.svg",
+      "brand": "/icons/arc-fintech/default.svg",
+      "black": "/icons/arc-fintech/black.svg",
+      "white": "/icons/arc-fintech/white.svg"
+    },
+    "url": "https://joinarc.com",
+    "collection": "brands"
+  },
+  {
+    "name": "Eve",
+    "hex": "000000",
+    "categories": [
+      "IoT",
+      "Smart Home"
+    ],
+    "variants": {
+      "default": "/icons/eve/default.svg",
+      "brand": "/icons/eve/default.svg",
+      "black": "/icons/eve/black.svg",
+      "white": "/icons/eve/white.svg"
+    },
+    "url": "https://www.evehome.com/",
+    "collection": "brands"
+  },
+  {
+    "name": "Grida",
+    "hex": "000000",
+    "categories": [
+      "Design",
+      "Devtool"
+    ],
+    "variants": {
+      "default": "/icons/grida/default.svg",
+      "brand": "/icons/grida/default.svg",
+      "black": "/icons/grida/black.svg",
+      "white": "/icons/grida/white.svg"
+    },
+    "url": "https://grida.co",
+    "collection": "brands"
+  },
+  {
+    "name": "Ivy Framework",
+    "hex": "00D18E",
+    "categories": [
+      "Framework",
+      "Developer"
+    ],
+    "variants": {
+      "default": "/icons/ivy-framework/default.svg",
+      "brand": "/icons/ivy-framework/brand.svg",
+      "black": "/icons/ivy-framework/black.svg",
+      "white": "/icons/ivy-framework/white.svg"
+    },
+    "url": "https://angular.dev",
+    "collection": "brands"
+  },
+  {
+    "name": "Postqued",
+    "hex": "000000",
+    "categories": [
+      "Social",
+      "Marketing",
+      "Automation"
+    ],
+    "variants": {
+      "default": "/icons/postqued/default.svg",
+      "brand": "/icons/postqued/default.svg",
+      "black": "/icons/postqued/black.svg",
+      "white": "/icons/postqued/white.svg"
+    },
+    "url": "https://postqued.com/",
+    "collection": "brands"
   }
 ]

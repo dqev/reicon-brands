@@ -11,6 +11,10 @@
 
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
@@ -68,7 +72,7 @@
             --card-bg: #181818;
             --card-hover-bg: #222225;
             --border: rgba(255, 255, 255, 0.08);
-            --font-primary: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
             --duration-smooth: .15s;
             --ease-smooth: cubic-bezier(.19, 1, .22, 1);
             --focus-color: rgba(0, 122, 255, 0.15);
@@ -98,6 +102,13 @@
             backface-visibility: hidden;
         }
 
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary);
+            font-weight: 500;
+            letter-spacing: -0.2px;
+            line-height: 26px;
+        }
+
         ::selection {
             color: var(--selection-color);
             background: var(--selection-bg);
@@ -121,7 +132,8 @@
             font-family: var(--font-primary);
             font-size: 14px;
             font-weight: 400;
-            line-height: 1.5;
+            line-height: 25px;
+            letter-spacing: -0.2px;
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -165,9 +177,13 @@
         @media (max-width: 540px) {
             .header-row {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
                 gap: 14px;
                 margin-bottom: 24px;
+            }
+
+            .header-left {
+                align-self: center;
             }
         }
 
@@ -175,6 +191,15 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            background-color: var(--card-bg);
+            border-radius: 100px;
+            padding: 10px 16px;
+            height: 42px;
+            transition: background-color var(--duration-smooth) var(--ease-smooth),
+                        border-color var(--duration-smooth) var(--ease-smooth);
+            text-decoration: none;
+            cursor: default;
+            flex-shrink: 0;
         }
 
         .header-logo-image {
@@ -185,21 +210,21 @@
         }
 
         .brand-logo-text {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
-            color: var(--body-muted);
+            color: var(--heading);
             letter-spacing: -0.01em;
         }
 
         .brand-logo-link {
-            color: var(--body-muted);
+            color: var(--heading);
             text-decoration: none;
-            transition: color var(--duration-smooth) var(--ease-smooth);
+            transition: opacity var(--duration-smooth) var(--ease-smooth);
             font-weight: 600;
         }
 
         .brand-logo-link:hover {
-            color: var(--heading);
+            opacity: 0.8;
             text-decoration: underline;
         }
 
@@ -208,14 +233,13 @@
             display: flex;
             align-items: center;
             background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 0 12px;
+            border-radius: 100px;
+            padding: 0 14px;
             gap: 10px;
             width: 100%;
             max-width: 260px;
-            height: 38px;
-            transition: border-color var(--duration-smooth) var(--ease-smooth),
-                background-color var(--duration-smooth) var(--ease-smooth),
+            height: 42px;
+            transition: background-color var(--duration-smooth) var(--ease-smooth),
                 box-shadow var(--duration-smooth) var(--ease-smooth);
         }
 
@@ -241,11 +265,10 @@
         }
 
         .search-icon {
-            color: var(--body-muted);
+            color: var(--heading);
             width: 14px;
             height: 14px;
             flex-shrink: 0;
-            stroke-width: 2.2;
         }
 
         .search-input-field {
@@ -274,6 +297,7 @@
             user-select: none;
             pointer-events: none;
             letter-spacing: 0.05em;
+            white-space: nowrap;
         }
 
         /* ── Grid Layout ── */
@@ -959,11 +983,12 @@
         /* ── Section Title Styles ── */
         .section-title {
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 500;
+            line-height: 26px;
             color: var(--heading);
             margin-bottom: 20px;
             margin-top: 8px;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.2px;
         }
 
         .top-brands-section {
@@ -1031,8 +1056,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 8px 12px;
-            border-radius: 8px;
+            padding: 9px 16px;
+            border-radius: 100px;
             font-size: 13px;
             font-weight: 500;
             color: var(--body-muted);
@@ -1056,8 +1081,8 @@
         .category-count {
             font-size: 10px;
             background: var(--border);
-            padding: 2px 6px;
-            border-radius: 9999px;
+            padding: 2px 8px;
+            border-radius: 100px;
             color: var(--body-muted);
             font-weight: 600;
         }
@@ -1078,14 +1103,15 @@
             align-items: center;
             gap: 8px;
             background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 8px 14px;
+            border-radius: 100px;
+            padding: 0 16px;
             font-size: 13px;
             font-weight: 500;
             color: var(--heading);
             cursor: pointer;
-            transition: all var(--duration-smooth) var(--ease-smooth);
-            height: 38px;
+            transition: background-color var(--duration-smooth) var(--ease-smooth);
+            height: 42px;
+            flex-shrink: 0;
         }
 
         .categories-toggle-btn:hover {
@@ -1095,7 +1121,8 @@
         .categories-toggle-btn svg {
             width: 15px;
             height: 15px;
-            stroke-width: 2.5;
+            flex-shrink: 0;
+            vertical-align: middle;
         }
 
         /* Sidebar backdrop overlay */
@@ -1169,6 +1196,12 @@
             .category-list {
                 height: calc(100% - 40px);
                 overflow-y: auto;
+                scrollbar-width: none;        /* Firefox */
+                -ms-overflow-style: none;     /* IE / Edge */
+            }
+
+            .category-list::-webkit-scrollbar {
+                display: none;                /* Chrome / Safari / WebKit */
             }
         }
 
@@ -1251,6 +1284,72 @@
             left: 0;
             z-index: var(--index-5);
         }
+
+        /* Favourites Hover Overlay Heart Button */
+        .card-fav-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background-color: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity var(--duration-smooth) var(--ease-smooth), color var(--duration-smooth) var(--ease-smooth);
+            z-index: 10;
+            color: var(--body-muted);
+            padding: 0;
+        }
+
+        .project-card:hover .card-fav-btn,
+        .card-fav-btn.is-fav {
+            opacity: 1;
+        }
+
+        .card-fav-btn:hover,
+        .card-fav-btn.is-fav {
+            color: #ff4757;
+        }
+        
+        .premium-btn {
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 0 16px;
+            height: 42px;
+            border-radius: 100px;
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color var(--duration-smooth) var(--ease-smooth);
+            background: var(--card-bg);
+            color: var(--body);
+        }
+
+        .premium-btn svg {
+            flex-shrink: 0;
+            vertical-align: middle;
+        }
+
+        .premium-btn:hover:not(:disabled) {
+            background-color: var(--card-hover-bg);
+        }
+
+        .premium-btn:active:not(:disabled) {
+            transform: scale(0.97);
+        }
+
+        .premium-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 
@@ -1278,24 +1377,16 @@
                 <div class="header-right-group">
                     <!-- Categories Toggle Button (Mobile only) -->
                     <button class="categories-toggle-btn" id="categoriesToggleBtn" aria-label="Toggle categories list">
-                        <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                            id="Menu-2-Fill--Streamline-Remix-Fill" height="16" width="16">
-                            <path
-                                d="M2 2.6666666666666665h12v1.3333333333333333H2V2.6666666666666665Zm0 4.666666666666666h8v1.3333333333333333H2v-1.3333333333333333Zm0 4.666666666666666h12v1.3333333333333333H2v-1.3333333333333333Z"
-                                stroke-width="0.6667"></path>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M2 6.63415C2 4.07478 4.07478 2 6.63415 2C9.19351 2 11.2683 4.07478 11.2683 6.63415C11.2683 9.19351 9.19351 11.2683 6.63415 11.2683C4.07478 11.2683 2 9.19351 2 6.63415Z" fill="currentColor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M12.7317 17.3659C12.7317 14.8065 14.8065 12.7317 17.3659 12.7317C19.9252 12.7317 22 14.8065 22 17.3659C22 19.9252 19.9252 22 17.3659 22C14.8065 22 12.7317 19.9252 12.7317 17.3659Z" fill="currentColor"></path><path d="M2 17.5C2 15.3787 2 14.318 2.65901 13.659C3.31802 13 4.37868 13 6.5 13C8.62132 13 9.68198 13 10.341 13.659C11 14.318 11 15.3787 11 17.5C11 19.6213 11 20.682 10.341 21.341C9.68198 22 8.62132 22 6.5 22C4.37868 22 3.31802 22 2.65901 21.341C2 20.682 2 19.6213 2 17.5Z" fill="currentColor"></path><path d="M13 6.5C13 4.37868 13 3.31802 13.659 2.65901C14.318 2 15.3787 2 17.5 2C19.6213 2 20.682 2 21.341 2.65901C22 3.31802 22 4.37868 22 6.5C22 8.62132 22 9.68198 21.341 10.341C20.682 11 19.6213 11 17.5 11C15.3787 11 14.318 11 13.659 10.341C13 9.68198 13 8.62132 13 6.5Z" fill="currentColor"></path></svg>
                         <span>Categories</span>
                     </button>
 
                     <!-- Right-aligned Premium Search Input Box -->
                     <div class="search-container-right">
-                        <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.8194 19.7006C17.7302 18.6064 18.6357 17.6929 19.7205 17.783C19.9086 17.7986 20.1337 17.8671 20.363 17.9368C20.3851 17.9435 20.4073 17.9502 20.4294 17.9569C20.4494 17.9629 20.4694 17.9689 20.4894 17.975C20.7001 18.0383 20.9097 18.1013 21.0692 18.1874C21.9844 18.6818 22.2799 19.8631 21.7067 20.7363C21.6068 20.8884 21.4519 21.0441 21.2962 21.2007C21.2814 21.2156 21.2666 21.2305 21.2519 21.2454C21.2371 21.2602 21.2224 21.2752 21.2076 21.2901C21.0524 21.4471 20.898 21.6034 20.7472 21.7041C19.8816 22.2823 18.7105 21.9843 18.2204 21.0611C18.135 20.9002 18.0725 20.6888 18.0097 20.4762C18.0038 20.4561 17.9978 20.4359 17.9918 20.4157C17.9852 20.3934 17.9785 20.3711 17.9719 20.3488C17.9028 20.1175 17.8349 19.8903 17.8194 19.7006Z" fill="currentColor"></path><path d="M20.1278 11.1429C20.1278 16.1924 16.0697 20.2858 11.0639 20.2858C6.05804 20.2858 2 16.1924 2 11.1429C2 6.09342 6.05804 2 11.0639 2C16.0697 2 20.1278 6.09342 20.1278 11.1429Z" fill="currentColor"></path></svg>
                         <input type="text" id="searchInput" class="search-input-field" placeholder="Search brands..."
                             autocomplete="off">
-                        <span class="search-shortcut-badge">/</span>
+                        <span class="search-shortcut-badge">⌘K</span>
                     </div>
                 </div>
             </header>
@@ -1316,7 +1407,19 @@
                 <div class="main-col">
                     <!-- Brands Grid Section -->
                     <section class="all-brands-section">
-                        <h1 class="section-title" id="gridTitle">All brands</h1>
+                        <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+                            <h1 class="section-title" id="gridTitle" style="margin-bottom: 0;">All brands</h1>
+                            <button id="downloadZipBtn" class="premium-btn" style="display: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 56 56" fill="none">
+                                  <g transform="translate(12 12)">
+                                    <polyline points="16 3 16 21 16 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3.5" stroke-linejoin="round"></polyline>
+                                    <polyline points="9 14 16 21 23 14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3.5" stroke-linejoin="round"></polyline>
+                                    <path d="m3,22v4c0,1.657,1.343,3,3,3h20c1.657,0,3-1.343,3-3v-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3.5" stroke-linejoin="round"></path>
+                                  </g>
+                                </svg>
+                                <span class="btn-label">Download</span>
+                            </button>
+                        </div>
                         <main class="icons-grid" id="iconsGrid">
                             <!-- Grid items loaded by active selection -->
                         </main>
@@ -1452,12 +1555,19 @@
     </div>
 
     <!-- Script Application Logic -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script>
         let iconsDatabase = [];
         let topBrandsDatabase = [];
-        let topBrandsByCategory = {};
-        let brandsCategorized = {};
-        let brandsStatistics = {};
+        let favourites = JSON.parse(localStorage.getItem('reicon_favourites') || '[]');
+
+        // ── DB session cache (avoids re-fetching 1.5MB on same-session navigations) ──
+        const DB_CACHE_KEY = 'reicon_db_v1';
+        const TOP_CACHE_KEY = 'reicon_top_v1';
+
+        function isFavourited(name) {
+            return favourites.includes(name);
+        }
 
         let filteredIcons = [];
         let activeCategory = 'All';
@@ -1502,31 +1612,63 @@
             setupError.style.display = 'block';
         }
 
-        // Database loading fetch
-        Promise.all([
-            fetch('database/top_brands.json').then(res => res.ok ? res.json() : []),
-            fetch('database/icons.json').then(res => res.ok ? res.json() : []),
-            fetch('database/3_top_brands_by_category.json').then(res => res.ok ? res.json() : {}),
-            fetch('database/1_brands_categorized.json').then(res => res.ok ? res.json() : {}),
-            fetch('database/4_brands_statistics.json').then(res => res.ok ? res.json() : {})
-        ])
-            .then(([topBrands, allIcons, topByCategory, categorized, stats]) => {
-                topBrandsDatabase = topBrands;
-                iconsDatabase = allIcons.sort((a, b) => a.name.localeCompare(b, undefined, { sensitivity: 'base', numeric: true }));
-                topBrandsByCategory = topByCategory;
-                brandsCategorized = categorized;
-                brandsStatistics = stats;
+        // Database loading — checks sessionStorage first to skip the 1.5MB fetch on repeat visits
+        function loadDatabases() {
+            try {
+                const cachedDb  = sessionStorage.getItem(DB_CACHE_KEY);
+                const cachedTop = sessionStorage.getItem(TOP_CACHE_KEY);
+                if (cachedDb && cachedTop) {
+                    topBrandsDatabase = JSON.parse(cachedTop);
+                    iconsDatabase = JSON.parse(cachedDb);
+                    filteredIcons = [...iconsDatabase];
+                    renderCategoriesSidebar();
+                    selectCategory('All');
+                    setupInfiniteScroll();
+                    return;
+                }
+            } catch (e) { /* quota exceeded — fall through to network */ }
 
-                filteredIcons = [...iconsDatabase];
+            Promise.all([
+                fetch('database/top_brands.json').then(res => res.ok ? res.json() : []),
+                fetch('database/icons.min.json').then(res => res.ok ? res.json() : [])
+            ])
+                .then(([topBrands, allIcons]) => {
+                    topBrandsDatabase = topBrands;
+                    iconsDatabase = allIcons.sort((a, b) => a.name.localeCompare(b, undefined, { sensitivity: 'base', numeric: true }));
 
-                renderCategoriesSidebar();
-                selectCategory('All');
-                setupInfiniteScroll();
-            })
-            .catch(err => {
-                console.error(err);
-                setupError.style.display = 'block';
-            });
+                    // Cache in sessionStorage for subsequent navigations in this tab
+                    try {
+                        sessionStorage.setItem(TOP_CACHE_KEY, JSON.stringify(topBrandsDatabase));
+                        sessionStorage.setItem(DB_CACHE_KEY, JSON.stringify(iconsDatabase));
+                    } catch (e) { /* storage full — silently skip */ }
+
+                    filteredIcons = [...iconsDatabase];
+                    renderCategoriesSidebar();
+                    selectCategory('All');
+                    setupInfiniteScroll();
+                })
+                .catch(err => {
+                    console.error(err);
+                    setupError.style.display = 'block';
+                });
+        }
+        loadDatabases();
+
+        // ── ⌘K / Ctrl+K → focus search, Escape → blur search ──
+        document.addEventListener('keydown', function (e) {
+            const isMac = navigator.platform.toUpperCase().includes('MAC');
+            const triggerKey = isMac ? e.metaKey : e.ctrlKey;
+
+            if (triggerKey && e.key === 'k') {
+                e.preventDefault();
+                searchInput.focus();
+                searchInput.select();
+            }
+
+            if (e.key === 'Escape' && document.activeElement === searchInput) {
+                searchInput.blur();
+            }
+        });
 
         // Categories Sidebar Builder
         function renderCategoriesSidebar() {
@@ -1570,8 +1712,37 @@
             topBtn.addEventListener('click', () => selectCategory('Top brands'));
             listContainer.appendChild(topBtn);
 
-            // 3. Add sorted category keys from brandsStatistics.brandsByCategory
-            const categoriesData = brandsStatistics.brandsByCategory || {};
+            // 3. Add 'Favourites' category
+            const favBtn = document.createElement('button');
+            favBtn.className = 'category-btn';
+            favBtn.dataset.category = 'Favourites';
+
+            const favName = document.createElement('span');
+            favName.style.display = 'inline-flex';
+            favName.style.alignItems = 'center';
+            favName.style.gap = '6px';
+            favName.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color: #ff4757; transform: translateY(0.5px);"><path d="M8.10627 18.2468C5.29819 16.0833 2 13.5422 2 9.1371C2 4.27416 7.50016 0.825464 12 5.50063L14 7.49928C14.2929 7.79212 14.7678 7.79203 15.0607 7.49908C15.3535 7.20614 15.3534 6.73127 15.0605 6.43843L13.1285 4.50712C17.3685 1.40309 22 4.67465 22 9.1371C22 13.5422 18.7018 16.0833 15.8937 18.2468C15.6019 18.4717 15.3153 18.6925 15.0383 18.9109C14 19.7294 13 20.5 12 20.5C11 20.5 10 19.7294 8.96173 18.9109C8.68471 18.6925 8.39814 18.4717 8.10627 18.2468Z"/></svg> Favourites`;
+
+            const favCount = document.createElement('span');
+            favCount.className = 'category-count fav-count-badge';
+            favCount.textContent = favourites.length;
+
+            favBtn.appendChild(favName);
+            favBtn.appendChild(favCount);
+
+            favBtn.addEventListener('click', () => selectCategory('Favourites'));
+            listContainer.appendChild(favBtn);
+
+            // 4. Compute dynamic categories from iconsDatabase
+            const categoriesData = {};
+            iconsDatabase.forEach(icon => {
+                if (icon.categories && Array.isArray(icon.categories)) {
+                    icon.categories.forEach(cat => {
+                        categoriesData[cat] = (categoriesData[cat] || 0) + 1;
+                    });
+                }
+            });
+
             const sortedCategories = Object.keys(categoriesData).sort((a, b) => a.localeCompare(b));
             sortedCategories.forEach(cat => {
                 const count = categoriesData[cat];
@@ -1615,6 +1786,12 @@
                 gridTitle.textContent = cat === 'All' ? 'All brands' : cat;
             }
 
+            // Toggle ZIP download button visibility
+            const downloadZipBtn = document.getElementById('downloadZipBtn');
+            if (downloadZipBtn) {
+                downloadZipBtn.style.display = cat === 'Favourites' ? 'block' : 'none';
+            }
+
             if (cat === 'All') {
                 filteredIcons = [...iconsDatabase];
                 renderNextChunk(true);
@@ -1630,17 +1807,23 @@
                 iconsGrid.appendChild(frag);
 
                 loadingSpinner.classList.remove('active');
+            } else if (cat === 'Favourites') {
+                filteredIcons = iconsDatabase.filter(icon => favourites.includes(icon.name));
+
+                iconsGrid.innerHTML = '';
+                const frag = document.createDocumentFragment();
+                filteredIcons.forEach((icon, idx) => {
+                    const card = createIconCard(icon, idx);
+                    frag.appendChild(card);
+                });
+                iconsGrid.appendChild(frag);
+
+                loadingSpinner.classList.remove('active');
             } else {
-                const catNames = brandsCategorized[cat];
-                if (catNames) {
-                    filteredIcons = catNames.map(name => iconsDatabase.find(x => x.name.toLowerCase() === name.toLowerCase())).filter(Boolean);
-                    filteredIcons.sort((a, b) => a.name.localeCompare(b, undefined, { sensitivity: 'base', numeric: true }));
-                } else {
-                    // Fallback: search directly in iconsDatabase categories
-                    filteredIcons = iconsDatabase.filter(icon =>
-                        icon.categories && icon.categories.some(c => c.toLowerCase() === cat.toLowerCase())
-                    );
-                }
+                // Filter directly in iconsDatabase categories (fast, no file fetch needed)
+                filteredIcons = iconsDatabase.filter(icon =>
+                    icon.categories && icon.categories.some(c => c.toLowerCase() === cat.toLowerCase())
+                );
 
                 iconsGrid.innerHTML = '';
                 const frag = document.createDocumentFragment();
@@ -1659,7 +1842,12 @@
         }
 
         // Search filtering logic
-        searchInput.addEventListener('input', applyFilters);
+        // Debounced search — avoids full re-render on every keystroke
+        let searchDebounceTimer = null;
+        searchInput.addEventListener('input', function () {
+            clearTimeout(searchDebounceTimer);
+            searchDebounceTimer = setTimeout(applyFilters, 200);
+        });
 
         function applyFilters() {
             const searchQuery = searchInput.value.toLowerCase().trim();
@@ -1757,6 +1945,20 @@
             card.role = 'link';
 
             card.style.animationDelay = `${(globalIndex % 20) * 10}ms`;
+
+            // Favourites overlay button
+            const favBtn = document.createElement('button');
+            favBtn.className = 'card-fav-btn';
+            if (isFavourited(icon.name)) {
+                favBtn.classList.add('is-fav');
+            }
+            favBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8.10627 18.2468C5.29819 16.0833 2 13.5422 2 9.1371C2 4.27416 7.50016 0.825464 12 5.50063L14 7.49928C14.2929 7.79212 14.7678 7.79203 15.0607 7.49908C15.3535 7.20614 15.3534 6.73127 15.0605 6.43843L13.1285 4.50712C17.3685 1.40309 22 4.67465 22 9.1371C22 13.5422 18.7018 16.0833 15.8937 18.2468C15.6019 18.4717 15.3153 18.6925 15.0383 18.9109C14 19.7294 13 20.5 12 20.5C11 20.5 10 19.7294 8.96173 18.9109C8.68471 18.6925 8.39814 18.4717 8.10627 18.2468Z"/></svg>`;
+            favBtn.title = isFavourited(icon.name) ? 'Remove from Favourites' : 'Add to Favourites';
+            favBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Stop navigation to subpage
+                toggleFavourite(icon.name, favBtn);
+            });
+            card.appendChild(favBtn);
 
             const container = document.createElement('div');
             container.className = 'project-card-icon-container';
@@ -1959,6 +2161,142 @@
             sidebarOverlayBg.addEventListener('click', closeMobileSidebar);
 
             closeMobileSidebarFn = closeMobileSidebar;
+        }
+
+        // Favourites & ZIP Downloader Application Helpers
+        let toastTimeout = null;
+        function showToast(msg) {
+            const toastEl = document.getElementById('toastNotify');
+            const toastTextEl = document.getElementById('toastText');
+            if (toastEl && toastTextEl) {
+                toastTextEl.textContent = msg;
+                toastEl.classList.add('show');
+                clearTimeout(toastTimeout);
+                toastTimeout = setTimeout(() => {
+                    toastEl.classList.remove('show');
+                }, 2500);
+            }
+        }
+
+        function toggleFavourite(name, btnEl) {
+            const idx = favourites.indexOf(name);
+            if (idx > -1) {
+                favourites.splice(idx, 1);
+                btnEl.classList.remove('is-fav');
+                btnEl.title = 'Add to Favourites';
+                showToast('Removed from Favourites');
+            } else {
+                favourites.push(name);
+                btnEl.classList.add('is-fav');
+                btnEl.title = 'Remove from Favourites';
+                showToast('Added to Favourites');
+            }
+            localStorage.setItem('reicon_favourites', JSON.stringify(favourites));
+            updateFavouritesCount();
+
+            // Dynamic refresh if currently inside Favourites view
+            if (activeCategory === 'Favourites') {
+                filteredIcons = iconsDatabase.filter(icon => favourites.includes(icon.name));
+                iconsGrid.innerHTML = '';
+                const frag = document.createDocumentFragment();
+                filteredIcons.forEach((icon, idx) => {
+                    const card = createIconCard(icon, idx);
+                    frag.appendChild(card);
+                });
+                iconsGrid.appendChild(frag);
+
+                if (favourites.length === 0) {
+                    const downloadZipBtn = document.getElementById('downloadZipBtn');
+                    if (downloadZipBtn) {
+                        downloadZipBtn.style.display = 'none';
+                    }
+                }
+            }
+        }
+
+        function updateFavouritesCount() {
+            const badges = document.querySelectorAll('.fav-count-badge');
+            badges.forEach(badge => {
+                badge.textContent = favourites.length;
+            });
+        }
+
+        // ZIP Generation with auto-compiled README.md for AI Agents / developers
+        const downloadZipBtn = document.getElementById('downloadZipBtn');
+        if (downloadZipBtn) {
+            downloadZipBtn.addEventListener('click', async () => {
+                if (favourites.length === 0) {
+                    alert('You have no favourited icons to download!');
+                    return;
+                }
+
+                downloadZipBtn.disabled = true;
+                downloadZipBtn.textContent = 'Generating ZIP...';
+
+                try {
+                    const zip = new JSZip();
+                    const favIcons = favourites.map(name => iconsDatabase.find(x => x.name === name)).filter(Boolean);
+
+                    // Compile customized README.md
+                    let readmeContent = `# Favourites Export\n\n`;
+                    readmeContent += `This folder contains the brand icons you favourited on Reicon.\n\n`;
+                    readmeContent += `## Exported Icons Reference\n\n`;
+                    readmeContent += `Below is the metadata for each exported icon to help AI agents or developers use them correctly:\n\n`;
+
+                    const fetchPromises = favIcons.map(async (icon) => {
+                        const slug = icon.variants.default.split('/')[2];
+                        const svgPath = '.' + icon.variants.default;
+
+                        try {
+                            const res = await fetch(svgPath);
+                            if (res.ok) {
+                                const svgText = await res.text();
+                                zip.file(`${slug}.svg`, svgText);
+
+                                // Metadata fields
+                                const hexVal = Array.isArray(icon.hex) ? icon.hex[0] : icon.hex;
+                                readmeContent += `### ${icon.name}\n`;
+                                readmeContent += `- **Filename**: \`${slug}.svg\`\n`;
+                                readmeContent += `- **Primary Brand Hex**: \`#${hexVal.toUpperCase()}\`\n`;
+                                readmeContent += `- **Official URL**: ${icon.url || 'N/A'}\n`;
+                                readmeContent += `- **Categories**: ${icon.categories ? icon.categories.join(', ') : 'N/A'}\n`;
+                                readmeContent += `- **Collection**: \`${icon.collection || 'brands'}\`\n`;
+                                readmeContent += `- **Permissions**: Open Source Brand Icon. Subject to the brand owner's trademark guidelines and usage terms.\n`;
+                                readmeContent += `- **Usage Suggestion for AI Agents**: "This SVG icon has a primary color of #${hexVal}. You can embed this inline in HTML/CSS with fill values or reference it as a background asset."\n\n`;
+                            } else {
+                                console.error(`Failed to fetch SVG for ${icon.name}`);
+                            }
+                        } catch (err) {
+                            console.error(`Error fetching SVG for ${icon.name}:`, err);
+                        }
+                    });
+
+                    await Promise.all(fetchPromises);
+
+                    // Add README.md
+                    zip.file("README.md", readmeContent);
+
+                    // Build ZIP blob
+                    const content = await zip.generateAsync({ type: "blob" });
+
+                    // Auto-download file
+                    const url = URL.createObjectURL(content);
+                    const link = document.createElement("a");
+                    link.href = url;
+                    link.download = `reicon-favourites-export.zip`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                    showToast('Exported Favourites ZIP!');
+                } catch (error) {
+                    console.error("Failed to generate ZIP file:", error);
+                    alert("An error occurred while generating the ZIP file.");
+                } finally {
+                    downloadZipBtn.disabled = false;
+                    downloadZipBtn.textContent = 'Download Favourites ZIP';
+                }
+            });
         }
     </script>
 </body>

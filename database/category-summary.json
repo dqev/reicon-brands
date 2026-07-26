@@ -1,0 +1,205 @@
+{
+  "summary": "Brand Categories Overview",
+  "description": "Complete breakdown of all brand categories with counts and sample brands",
+  "categories": {
+    "Technology": {
+      "subcategories": [
+        {
+          "name": "Major Tech Giants",
+          "brands": [
+            "Google",
+            "Microsoft",
+            "Apple",
+            "Amazon",
+            "Meta",
+            "OpenAI",
+            "Anthropic"
+          ],
+          "count": 7
+        },
+        {
+          "name": "Cloud & Infrastructure",
+          "brands": [
+            "AWS",
+            "Azure",
+            "Google Cloud",
+            "Cloudflare",
+            "DigitalOcean"
+          ],
+          "count": 14
+        },
+        {
+          "name": "DevOps & CI/CD",
+          "count": "Multiple"
+        }
+      ],
+      "total_brands": 150
+    },
+    "Finance & Crypto": {
+      "subcategories": [
+        {
+          "name": "Banking",
+          "count": 20
+        },
+        {
+          "name": "Investment",
+          "count": 15
+        },
+        {
+          "name": "Cryptocurrency",
+          "count": 25
+        }
+      ],
+      "total_brands": 75
+    },
+    "Entertainment & Media": {
+      "subcategories": [
+        {
+          "name": "Streaming Platforms",
+          "brands": [
+            "Netflix",
+            "Disney+",
+            "Prime Video",
+            "Apple TV+",
+            "HBO Max"
+          ],
+          "count": 12
+        },
+        {
+          "name": "Gaming",
+          "count": 30
+        },
+        {
+          "name": "Social Media",
+          "brands": [
+            "Twitter",
+            "Facebook",
+            "Instagram",
+            "TikTok",
+            "Discord"
+          ],
+          "count": 18
+        }
+      ],
+      "total_brands": 100
+    },
+    "Retail & E-commerce": {
+      "subcategories": [
+        {
+          "name": "E-commerce Platforms",
+          "brands": [
+            "Amazon",
+            "eBay",
+            "Shopify",
+            "Alibaba",
+            "Etsy"
+          ],
+          "count": 20
+        },
+        {
+          "name": "Payment Systems",
+          "brands": [
+            "Stripe",
+            "PayPal",
+            "Square",
+            "Wise"
+          ],
+          "count": 15
+        }
+      ],
+      "total_brands": 50
+    },
+    "Travel & Hospitality": {
+      "subcategories": [
+        {
+          "name": "Airlines",
+          "count": 35
+        },
+        {
+          "name": "Hotels",
+          "count": 25
+        },
+        {
+          "name": "Travel Booking",
+          "count": 12
+        }
+      ],
+      "total_brands": 80
+    },
+    "Healthcare & Fitness": {
+      "subcategories": [
+        {
+          "name": "Fitness Apps",
+          "count": 15
+        },
+        {
+          "name": "Telemedicine",
+          "count": 8
+        }
+      ],
+      "total_brands": 25
+    },
+    "AI & Machine Learning": {
+      "subcategories": [
+        {
+          "name": "LLM Models",
+          "brands": [
+            "ChatGPT",
+            "Claude",
+            "Gemini",
+            "Llama",
+            "Mistral"
+          ],
+          "count": 15
+        },
+        {
+          "name": "AI Platforms",
+          "brands": [
+            "Hugging Face",
+            "Replicate",
+            "Modal",
+            "Together AI"
+          ],
+          "count": 12
+        }
+      ],
+      "total_brands": 30
+    },
+    "Programming & Development": {
+      "subcategories": [
+        {
+          "name": "Languages",
+          "count": 25
+        },
+        {
+          "name": "Frameworks",
+          "count": 40
+        },
+        {
+          "name": "Tools & IDEs",
+          "count": 35
+        }
+      ],
+      "total_brands": 120
+    }
+  },
+  "statistics": {
+    "total_brands": 4910,
+    "total_categories": 58,
+    "average_brands_per_category": 85,
+    "largest_categories": [
+      {
+        "name": "Programming Languages",
+        "count": 120
+      },
+      {
+        "name": "Cloud Platforms",
+        "count": 100
+      },
+      {
+        "name": "Frontend Frameworks",
+        "count": 95
+      }
+    ]
+  }
+}

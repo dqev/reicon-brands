@@ -1,6 +1,6 @@
 # Brands Icon Collection
 
-Total icons: 4910
+Total icons: 4915
 Format: SVG
 Variants: default, brand, black, white
 Source: https://brands.reicon.dev
@@ -271,6 +271,7 @@ Source: https://brands.reicon.dev
 - [aral](https://brands.reicon.dev/icon/aral/)
 - [arangodb](https://brands.reicon.dev/icon/arangodb/)
 - [arc](https://brands.reicon.dev/icon/arc/)
+- [arc-fintech](https://brands.reicon.dev/icon/arc-fintech/)
 - [arcee](https://brands.reicon.dev/icon/arcee/)
 - [arcgis](https://brands.reicon.dev/icon/arcgis/)
 - [arch-linux](https://brands.reicon.dev/icon/arch-linux/)
@@ -1325,6 +1326,7 @@ Source: https://brands.reicon.dev
 - [etsy](https://brands.reicon.dev/icon/etsy/)
 - [european-space-agency](https://brands.reicon.dev/icon/european-space-agency/)
 - [european-union](https://brands.reicon.dev/icon/european-union/)
+- [eve](https://brands.reicon.dev/icon/eve/)
 - [event-store](https://brands.reicon.dev/icon/event-store/)
 - [eventbrite](https://brands.reicon.dev/icon/eventbrite/)
 - [evernote](https://brands.reicon.dev/icon/evernote/)
@@ -1768,6 +1770,7 @@ Source: https://brands.reicon.dev
 - [greensock](https://brands.reicon.dev/icon/greensock/)
 - [greptile](https://brands.reicon.dev/icon/greptile/)
 - [greptimedb](https://brands.reicon.dev/icon/greptimedb/)
+- [grida](https://brands.reicon.dev/icon/grida/)
 - [griddotai](https://brands.reicon.dev/icon/griddotai/)
 - [gridsome](https://brands.reicon.dev/icon/gridsome/)
 - [grocy](https://brands.reicon.dev/icon/grocy/)
@@ -2089,6 +2092,7 @@ Source: https://brands.reicon.dev
 - [itunes](https://brands.reicon.dev/icon/itunes/)
 - [itvx](https://brands.reicon.dev/icon/itvx/)
 - [iveco](https://brands.reicon.dev/icon/iveco/)
+- [ivy-framework](https://brands.reicon.dev/icon/ivy-framework/)
 - [jabber](https://brands.reicon.dev/icon/jabber/)
 - [jaco](https://brands.reicon.dev/icon/jaco/)
 - [jaeger](https://brands.reicon.dev/icon/jaeger/)
@@ -3378,6 +3382,7 @@ Source: https://brands.reicon.dev
 - [postman](https://brands.reicon.dev/icon/postman/)
 - [postmark](https://brands.reicon.dev/icon/postmark/)
 - [postmates](https://brands.reicon.dev/icon/postmates/)
+- [postqued](https://brands.reicon.dev/icon/postqued/)
 - [pouchdb](https://brands.reicon.dev/icon/pouchdb/)
 - [powerade](https://brands.reicon.dev/icon/powerade/)
 - [powers](https://brands.reicon.dev/icon/powers/)

@@ -18,20 +18,116 @@ for (const icon of icons) {
     }
 }
 
+function escHtml(str) {
+    return str.replace(/[&<>"']/g, (m) => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+    }[m]));
+}
+
 console.log(`Generating SEO files for ${slugs.length} icon pages...`);
 
-// ─── SITEMAP ────────────────────────────────────────────────
-function generateSitemap() {
-    const lines = [
+// ─── SITEMAP INDEX ARCHITECTURE FOR FAST INDEXING ────────────
+function generateSitemaps() {
+    const dateStr = new Date().toISOString().split('T')[0];
+
+    // Load top brands
+    const topBrandsPath = path.join(__dirname, '..', 'database', 'top_brands.json');
+    let topBrandNames = [];
+    if (fs.existsSync(topBrandsPath)) {
+        try {
+            topBrandNames = JSON.parse(fs.readFileSync(topBrandsPath, 'utf-8')).map(s => String(s).toLowerCase());
+        } catch (e) {}
+    }
+
+    const topSlugs = [];
+    const regularSlugs = [];
+    for (const icon of icons) {
+        const slug = icon.variants.default.split('/')[2];
+        const isTop = topBrandNames.includes(icon.name.toLowerCase()) || topBrandNames.includes(slug.toLowerCase());
+        if (isTop) {
+            topSlugs.push({ slug, icon });
+        } else {
+            regularSlugs.push({ slug, icon });
+        }
+    }
+
+    const sitemapFiles = {};
+
+    // 1. sitemap-main.xml
+    sitemapFiles['sitemap-main.xml'] = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-        '  <url><loc>' + SITE_URL + '/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>',
-    ];
-    for (const slug of slugs) {
-        lines.push('  <url><loc>' + SITE_URL + '/icon/' + slug + '/</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>');
+        `  <url><loc>${SITE_URL}/</loc><lastmod>${dateStr}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>`,
+        '</urlset>'
+    ].join('\n');
+
+    // Helper for image sitemap url entries
+    function makeUrlEntry(slug, icon, priority = '0.8', changefreq = 'monthly') {
+        const title = escHtml(`${icon.name} Logo SVG`);
+        const imgUrl = `${SITE_URL}${icon.variants.default}`;
+        return [
+            '  <url>',
+            `    <loc>${SITE_URL}/icon/${slug}/</loc>`,
+            `    <lastmod>${dateStr}</lastmod>`,
+            `    <changefreq>${changefreq}</changefreq>`,
+            `    <priority>${priority}</priority>`,
+            '    <image:image>',
+            `      <image:loc>${imgUrl}</image:loc>`,
+            `      <image:title>${title}</image:title>`,
+            '    </image:image>',
+            '  </url>'
+        ].join('\n');
     }
-    lines.push('</urlset>');
-    return lines.join('\n') + '\n';
+
+    // 2. sitemap-top.xml
+    const topLines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'
+    ];
+    for (const item of topSlugs) {
+        topLines.push(makeUrlEntry(item.slug, item.icon, '0.9', 'weekly'));
+    }
+    topLines.push('</urlset>');
+    sitemapFiles['sitemap-top.xml'] = topLines.join('\n');
+
+    // 3. Partition regularSlugs into chunks of ~1,000 URLs
+    const CHUNK_SIZE = 1000;
+    const subSitemapNames = ['sitemap-main.xml', 'sitemap-top.xml'];
+
+    for (let i = 0; i < regularSlugs.length; i += CHUNK_SIZE) {
+        const chunkIndex = Math.floor(i / CHUNK_SIZE) + 1;
+        const fileName = `sitemap-brands-${chunkIndex}.xml`;
+        subSitemapNames.push(fileName);
+
+        const chunk = regularSlugs.slice(i, i + CHUNK_SIZE);
+        const lines = [
+            '<?xml version="1.0" encoding="UTF-8"?>',
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'
+        ];
+        for (const item of chunk) {
+            lines.push(makeUrlEntry(item.slug, item.icon, '0.8', 'monthly'));
+        }
+        lines.push('</urlset>');
+        sitemapFiles[fileName] = lines.join('\n');
+    }
+
+    // 4. Master sitemap.xml Index File
+    const masterLines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+    ];
+    for (const name of subSitemapNames) {
+        masterLines.push([
+            '  <sitemap>',
+            `    <loc>${SITE_URL}/${name}</loc>`,
+            `    <lastmod>${dateStr}</lastmod>`,
+            '  </sitemap>'
+        ].join('\n'));
+    }
+    masterLines.push('</sitemapindex>');
+    sitemapFiles['sitemap.xml'] = masterLines.join('\n');
+
+    return sitemapFiles;
 }
 
 // ─── ROBOTS.TXT ─────────────────────────────────────────────
@@ -127,8 +223,10 @@ function generateBrandsIndex() {
 }
 
 // ─── WRITE FILES ────────────────────────────────────────────
+const sitemapMap = generateSitemaps();
+
 const files = {
-    'sitemap.xml': generateSitemap(),
+    ...sitemapMap,
     'robots.txt': generateRobots(),
     'llms.txt': generateLlmstxt(),
     'humans.txt': generateHumans(),
