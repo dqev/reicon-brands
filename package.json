@@ -1,0 +1,9 @@
+{
+  "name": "brands-reicon",
+  "version": "1.0.0",
+  "description": "4,900+ free SVG brand icons collection",
+  "scripts": {
+    "build": "node scripts/generate-seo-files.js && node scripts/generate-icon-pages.js"
+  },
+  "private": true
+}
