@@ -1,8 +1,8 @@
 # Brands Icon Collection
 
-Total icons: 4915
+Total icons: 4928
 Format: SVG
-Variants: default, brand, black, white
+Variants: default
 Source: https://brands.reicon.dev
 
 ## Icon List
@@ -235,6 +235,7 @@ Source: https://brands.reicon.dev
 - [anyscale](https://brands.reicon.dev/icon/anyscale/)
 - [anytype](https://brands.reicon.dev/icon/anytype/)
 - [apache](https://brands.reicon.dev/icon/apache/)
+- [apache-kafka](https://brands.reicon.dev/icon/apache-kafka/)
 - [aparat](https://brands.reicon.dev/icon/aparat/)
 - [apertis](https://brands.reicon.dev/icon/apertis/)
 - [apex](https://brands.reicon.dev/icon/apex/)
@@ -364,6 +365,7 @@ Source: https://brands.reicon.dev
 - [avajs](https://brands.reicon.dev/icon/avajs/)
 - [avalanche](https://brands.reicon.dev/icon/avalanche/)
 - [avaloniaui](https://brands.reicon.dev/icon/avaloniaui/)
+- [avanza](https://brands.reicon.dev/icon/avanza/)
 - [avast](https://brands.reicon.dev/icon/avast/)
 - [avianca](https://brands.reicon.dev/icon/avianca/)
 - [avid](https://brands.reicon.dev/icon/avid/)
@@ -1117,6 +1119,7 @@ Source: https://brands.reicon.dev
 - [dingocoin](https://brands.reicon.dev/icon/dingocoin/)
 - [dior](https://brands.reicon.dev/icon/dior/)
 - [directus](https://brands.reicon.dev/icon/directus/)
+- [dis-chem-pharmacies](https://brands.reicon.dev/icon/dis-chem-pharmacies/)
 - [discloud](https://brands.reicon.dev/icon/discloud/)
 - [discogs](https://brands.reicon.dev/icon/discogs/)
 - [discord](https://brands.reicon.dev/icon/discord/)
@@ -1240,6 +1243,7 @@ Source: https://brands.reicon.dev
 - [edge](https://brands.reicon.dev/icon/edge/)
 - [edge-impulse](https://brands.reicon.dev/icon/edge-impulse/)
 - [edgedb](https://brands.reicon.dev/icon/edgedb/)
+- [edison](https://brands.reicon.dev/icon/edison/)
 - [editorconfig](https://brands.reicon.dev/icon/editorconfig/)
 - [edotleclerc](https://brands.reicon.dev/icon/edotleclerc/)
 - [educative](https://brands.reicon.dev/icon/educative/)
@@ -2896,11 +2900,13 @@ Source: https://brands.reicon.dev
 - [nextdns](https://brands.reicon.dev/icon/nextdns/)
 - [nextdoor](https://brands.reicon.dev/icon/nextdoor/)
 - [nextdotjs](https://brands.reicon.dev/icon/nextdotjs/)
+- [nextera-energy](https://brands.reicon.dev/icon/nextera-energy/)
 - [nextflow](https://brands.reicon.dev/icon/nextflow/)
 - [nextjs](https://brands.reicon.dev/icon/nextjs/)
 - [nextra](https://brands.reicon.dev/icon/nextra/)
 - [nf-core](https://brands.reicon.dev/icon/nf-core/)
 - [nfc](https://brands.reicon.dev/icon/nfc/)
+- [ngern-tid-lor](https://brands.reicon.dev/icon/ngern-tid-lor/)
 - [nginx](https://brands.reicon.dev/icon/nginx/)
 - [nginx-proxy-manager](https://brands.reicon.dev/icon/nginx-proxy-manager/)
 - [ngrok](https://brands.reicon.dev/icon/ngrok/)
@@ -2998,6 +3004,7 @@ Source: https://brands.reicon.dev
 - [oauth](https://brands.reicon.dev/icon/oauth/)
 - [obb](https://brands.reicon.dev/icon/obb/)
 - [objectivec](https://brands.reicon.dev/icon/objectivec/)
+- [oblio](https://brands.reicon.dev/icon/oblio/)
 - [obs](https://brands.reicon.dev/icon/obs/)
 - [obs-studio](https://brands.reicon.dev/icon/obs-studio/)
 - [observable](https://brands.reicon.dev/icon/observable/)
@@ -3558,6 +3565,7 @@ Source: https://brands.reicon.dev
 - [rainyun](https://brands.reicon.dev/icon/rainyun/)
 - [rakuten](https://brands.reicon.dev/icon/rakuten/)
 - [rakuten-kobo](https://brands.reicon.dev/icon/rakuten-kobo/)
+- [ralph-lauren](https://brands.reicon.dev/icon/ralph-lauren/)
 - [ram](https://brands.reicon.dev/icon/ram/)
 - [rancher](https://brands.reicon.dev/icon/rancher/)
 - [randevum](https://brands.reicon.dev/icon/randevum/)
@@ -3759,6 +3767,7 @@ Source: https://brands.reicon.dev
 - [rxjs](https://brands.reicon.dev/icon/rxjs/)
 - [ryanair](https://brands.reicon.dev/icon/ryanair/)
 - [rye](https://brands.reicon.dev/icon/rye/)
+- [s-oil](https://brands.reicon.dev/icon/s-oil/)
 - [s7-airlines](https://brands.reicon.dev/icon/s7-airlines/)
 - [sabanci](https://brands.reicon.dev/icon/sabanci/)
 - [sabeco](https://brands.reicon.dev/icon/sabeco/)
@@ -3934,6 +3943,7 @@ Source: https://brands.reicon.dev
 - [slint](https://brands.reicon.dev/icon/slint/)
 - [slock](https://brands.reicon.dev/icon/slock/)
 - [smart](https://brands.reicon.dev/icon/smart/)
+- [smartbill](https://brands.reicon.dev/icon/smartbill/)
 - [smartthings](https://brands.reicon.dev/icon/smartthings/)
 - [smashing-magazine](https://brands.reicon.dev/icon/smashing-magazine/)
 - [smithery](https://brands.reicon.dev/icon/smithery/)
@@ -4275,6 +4285,7 @@ Source: https://brands.reicon.dev
 - [the-finals](https://brands.reicon.dev/icon/the-finals/)
 - [the-guardian](https://brands.reicon.dev/icon/the-guardian/)
 - [the-irish-times](https://brands.reicon.dev/icon/the-irish-times/)
+- [the-lawyers-global](https://brands.reicon.dev/icon/the-lawyers-global/)
 - [the-mighty](https://brands.reicon.dev/icon/the-mighty/)
 - [the-models-resource](https://brands.reicon.dev/icon/the-models-resource/)
 - [the-movie-database](https://brands.reicon.dev/icon/the-movie-database/)
@@ -4753,6 +4764,7 @@ Source: https://brands.reicon.dev
 - [wireguard](https://brands.reicon.dev/icon/wireguard/)
 - [wireshark](https://brands.reicon.dev/icon/wireshark/)
 - [wise](https://brands.reicon.dev/icon/wise/)
+- [wisetech-global](https://brands.reicon.dev/icon/wisetech-global/)
 - [wisgate](https://brands.reicon.dev/icon/wisgate/)
 - [wish](https://brands.reicon.dev/icon/wish/)
 - [wistia](https://brands.reicon.dev/icon/wistia/)
@@ -4832,6 +4844,7 @@ Source: https://brands.reicon.dev
 - [yandex](https://brands.reicon.dev/icon/yandex/)
 - [yandex-cloud](https://brands.reicon.dev/icon/yandex-cloud/)
 - [yandex-taxi](https://brands.reicon.dev/icon/yandex-taxi/)
+- [yapi-kredi](https://brands.reicon.dev/icon/yapi-kredi/)
 - [yarn](https://brands.reicon.dev/icon/yarn/)
 - [yelp](https://brands.reicon.dev/icon/yelp/)
 - [yeoman](https://brands.reicon.dev/icon/yeoman/)

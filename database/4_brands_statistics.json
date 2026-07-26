@@ -1,13 +1,13 @@
 {
-  "totalBrands": 4915,
+  "totalBrands": 4928,
   "totalCategories": 115,
   "brandsByCategory": {
-    "Language": 96,
-    "DevTool": 156,
-    "Microsoft": 21,
-    "Framework": 121,
     "Config": 2,
     "Library": 149,
+    "Microsoft": 21,
+    "Framework": 121,
+    "Language": 96,
+    "DevTool": 156,
     "Software": 3383,
     "Platform": 2427,
     "AI": 278,

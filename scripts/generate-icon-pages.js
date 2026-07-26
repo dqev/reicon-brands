@@ -20,7 +20,7 @@ function escJs(str) {
 function getDescription(name, categories, hexDisplay) {
     const catStr = categories && categories.length > 0 ? categories.join(', ') : 'brand asset';
     const colorInfo = hexDisplay && hexDisplay !== 'N/A' ? ` in official brand color (${hexDisplay})` : '';
-    return `Download the official ${name} logo in SVG, vector, and high-resolution PNG formats for free. Scalable ${name} ${catStr} icon available${colorInfo}, default, black, and white variants for websites, apps, and design projects.`;
+    return `Download the official ${name} logo in SVG, vector, and high-resolution PNG formats for free. Scalable ${name} ${catStr} icon available${colorInfo} for websites, apps, and design projects.`;
 }
 
 function generatePage(slug, icon) {
@@ -33,8 +33,9 @@ function generatePage(slug, icon) {
     const collection = icon.collection || 'brands';
     const url = icon.url || '';
     const displayUrl = url.replace(/^https?:\/\/(www\.)?/, '');
-    const defaultSvgPath = icon.variants.default;
-    const variantKeys = ['default', 'brand', 'black', 'white'];
+    const defaultSvgPath = icon.variants.original || icon.variants.default || Object.values(icon.variants)[0];
+    const hasTextVariant = icon.variants && !!icon.variants.text;
+    const variantKeys = hasTextVariant ? ['original', 'text'] : ['original'];
 
     const breadcrumbSchema = JSON.stringify({
         "@context": "https://schema.org",
@@ -50,24 +51,24 @@ function generatePage(slug, icon) {
         "@type": "ImageObject",
         "contentUrl": `${SITE_URL}${defaultSvgPath}`,
         "name": `${name} Logo SVG & Vector Icon`,
-        "description": `Official ${name} logo SVG vector download in high quality PNG, black, white, and brand color variants.`,
+        "description": `Official ${name} logo SVG vector download in high quality PNG.`,
         "encodingFormat": "image/svg+xml",
         "keywords": `${name} logo, ${name} svg, ${name} png, ${name} vector, ${name} brand icon, ${name} download`
     });
 
     const pageTitle = `${name} Logo SVG, PNG & Vector Icon Free Download | Reicon`;
     const ogTitle = `${name} Logo SVG, PNG & Vector Icon Free Download`;
-    const ogDescription = `Download free ${name} logo in SVG, PNG, and vector formats. Official high-res ${name} brand icon with custom color variants.`;
+    const ogDescription = `Download free ${name} logo in SVG, PNG, and vector formats. Official high-res ${name} brand icon.`;
 
     const variantImgTags = variantKeys.map(vKey => {
         const vPath = icon.variants && icon.variants[vKey];
-        return `<img src="${vPath || ''}" class="preview-canvas-image${vKey === 'default' ? ' active' : ''}" data-variant-img="${vKey}" alt="${escHtml(name)} logo ${vKey} variant SVG" crossorigin="anonymous">`;
+        return `<img src="${vPath || ''}" class="preview-canvas-image${vKey === 'original' ? ' active' : ''}" data-variant-img="${vKey}" alt="${escHtml(name)} logo ${vKey} variant SVG" crossorigin="anonymous">`;
     }).join('\n                        ');
 
-    const variantBtnTags = variantKeys.map(vKey => {
-        const hasVar = icon.variants && icon.variants[vKey];
-        return `<button class="variant-btn${vKey === 'default' ? ' active' : ''}${!hasVar ? ' disabled' : ''}" data-variant="${vKey}"${!hasVar ? ' title="Variant unavailable"' : ''}>${vKey}</button>`;
-    }).join('\n                        ');
+    const variantBtnTags = hasTextVariant ? variantKeys.map(vKey => {
+        const label = vKey === 'original' ? 'Original' : 'Text Wordmark';
+        return `<button class="variant-btn${vKey === 'original' ? ' active' : ''}" data-variant="${vKey}">${label}</button>`;
+    }).join('\n                        ') : '';
 
     const categoryTags = categories.map(cat => `<span class="category-badge">${escHtml(cat)}</span>`).join('\n                            ');
 
@@ -304,12 +305,14 @@ function generatePage(slug, icon) {
         }
         @media (max-width:480px) {
             .preview-canvas { min-height: 180px; }
-            .preview-canvas-image { max-width: 35%; max-height: 35%; }
+            .preview-canvas-image { width: 64px; height: 64px; }
         }
         .preview-canvas-image {
             position: absolute;
-            max-width: 45%;
-            max-height: 45%;
+            width: 80px;
+            height: 80px;
+            max-width: 70%;
+            max-height: 70%;
             object-fit: contain;
             transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 0;
@@ -459,34 +462,68 @@ function generatePage(slug, icon) {
         .color-dot { width: 14px; height: 14px; border-radius: 50%; border: none; flex-shrink: 0; }
         .meta-link { color: inherit; text-decoration: underline; }
 
-        .code-block-section {
+        .code-card-outer {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 14px 16px 16px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 10px;
             width: 100%;
         }
-        .code-block-header {
-            font-size: 9.5px;
+        .code-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2px;
+        }
+        .code-card-title {
+            font-size: 10px;
             font-weight: 600;
+            letter-spacing: 0.08em;
             color: var(--body-muted);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+        }
+        .code-copy-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: transparent;
+            color: var(--body-muted);
+            border: none;
+            cursor: pointer;
+            transition: background var(--duration-smooth) var(--ease-smooth), color var(--duration-smooth) var(--ease-smooth), transform 0.15s ease;
+        }
+        .code-copy-btn:hover {
+            background: var(--card-hover-bg);
+            color: var(--heading);
+            transform: scale(1.06);
+        }
+        .code-card-inner {
+            background: #08080a;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 14px 16px;
+            overflow-x: auto;
+            overflow-y: auto;
+            max-height: 220px;
         }
         .code-container {
-            background-color: #121214;
-            border: none;
-            border-radius: 14px;
-            padding: 14px;
-            max-height: 200px;
-            overflow: auto;
-            font-family: ui-monospace, SFMono-Regular, SF Pro Mono, Menlo, Monaco, Consolas, monospace;
-            font-size: 11px;
-            color: #d4d4d8;
+            font-family: ui-monospace, SFMono-Regular, "SF Pro Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 11.5px;
+            line-height: 1.6;
+            color: #e4e4e7;
             white-space: pre-wrap;
             word-break: break-all;
-            line-height: 1.5;
-            -webkit-font-smoothing: auto;
+            margin: 0;
         }
+        .token-tag { color: #f43f5e; font-weight: 500; }
+        .token-attr { color: #c084fc; }
+        .token-val { color: #4ade80; }
 
         .actions-grid {
             display: grid;
@@ -674,7 +711,7 @@ function generatePage(slug, icon) {
         @media (max-width: 480px) {
             .brand-title { font-size: 18px; }
             .preview-canvas { min-height: 180px; }
-            .preview-canvas-image { max-width: 35%; max-height: 35%; }
+            .preview-canvas-image { width: 64px; height: 64px; }
             .code-container { max-height: 140px; }
             .page-layout { gap: 20px; }
         }
@@ -718,19 +755,19 @@ function generatePage(slug, icon) {
                             <button class="bg-toggle-btn btn-dark" id="btnDarkBg" title="Dark background"></button>
                         </div>
                     </div>
-
-                    <div class="variant-picker" id="variantPicker">
+                    ${hasTextVariant ? `
+                    <div class="variant-picker" id="variantPicker" style="margin-top: 12px;">
                         <div class="variant-slider-indicator" id="variantSliderIndicator"></div>
                         ${variantBtnTags}
-                    </div>
+                    </div>` : ''}
 
                     <div class="tool-section">
                         <div class="tool-section-title">Customize</div>
 
                         <div class="tool-row" id="colorPickerSection" style="display: flex; flex-direction: column; gap: 8px; align-items: stretch; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 12px;">
                             <span class="tool-label" style="margin-bottom: 4px;">Colors</span>
-                            <div id="colorsContainer" style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
-                                <!-- Dynamic Color Pickers dynamically rendered -->
+                            <div id="colorsContainer" style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; width: 100%;">
+                                <!-- Dynamic Circular Color Pickers -->
                             </div>
                         </div>
 
@@ -784,32 +821,35 @@ function generatePage(slug, icon) {
                         </div>
                     </div>
 
-                    <div class="code-block-section">
-                        <div class="code-block-header"><span>SVG Source Code</span></div>
-                        <div class="code-container" id="svgCodeContainer">Loading...</div>
-                    </div>
-
                     <div class="actions-grid">
                         <button class="action-button action-button-primary" id="btnDownload">
-                            <svg viewBox="0 0 24 24"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path><path d="M7 11l5 5l5 -5"></path><path d="M12 4l0 12"></path></svg>
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                             <span id="downloadBtnLabel">Download SVG</span>
                         </button>
-                        <button class="action-button" id="btnCopySvg">
-                            <svg viewBox="0 0 24 24"><path d="M8 8m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"></path><path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path></svg>
-                            <span>Copy SVG</span>
+                        <button class="action-button" id="btnCopyCode" title="Copy raw SVG code">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            <span>Code</span>
                         </button>
-                        <button class="action-button" id="btnCopyPath">
-                            <svg viewBox="0 0 24 24"><path d="M9 15l6 -6"></path><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464"></path><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463"></path></svg>
-                            <span>Copy Path</span>
+                        <button class="action-button" id="btnCopyPath" title="Copy SVG d path attribute">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                            <span>Path</span>
                         </button>
-                        <button class="action-button" id="btnDownloadAll">
-                            <svg viewBox="0 0 24 24"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path><path d="M7 11l5 5l5 -5"></path><path d="M12 4l0 12"></path></svg>
-                            <span>Download All</span>
-                        </button>
-                        <button class="action-button" id="btnFavourite">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8.10627 18.2468C5.29819 16.0833 2 13.5422 2 9.1371C2 4.27416 7.50016 0.825464 12 5.50063L14 7.49928C14.2929 7.79212 14.7678 7.79203 15.0607 7.49908C15.3535 7.20614 15.3534 6.73127 15.0605 6.43843L13.1285 4.50712C17.3685 1.40309 22 4.67465 22 9.1371C22 13.5422 18.7018 16.0833 15.8937 18.2468C15.6019 18.4717 15.3153 18.6925 15.0383 18.9109C14 19.7294 13 20.5 12 20.5C11 20.5 10 19.7294 8.96173 18.9109C8.68471 18.6925 8.39814 18.4717 8.10627 18.2468Z"/></svg>
+                        <button class="action-button" id="btnFavourite" title="Save to Favourites">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                             <span id="favLabelSpan">Favourite</span>
                         </button>
+                    </div>
+
+                    <div class="code-card-outer">
+                        <div class="code-card-header">
+                            <span class="code-card-title">SVG Code</span>
+                            <button class="code-copy-btn" id="btnCopyCodeHeader" title="Copy SVG Code">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            </button>
+                        </div>
+                        <div class="code-card-inner">
+                            <pre class="code-container" id="svgCodeContainer">Loading...</pre>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -823,10 +863,10 @@ function generatePage(slug, icon) {
 
     <script>
         var iconData = ${iconDataJson};
-        var selectedVariant = 'default';
+        var selectedVariant = 'original';
         var selectedFormat = 'svg';
         var selectedSize = 64;
-        var variantKeys = ['default', 'brand', 'black', 'white'];
+        var variantKeys = Object.keys(iconData.variants);
         var downloadBase = '${escJs(downloadFilenameBase)}';
 
         var previewEl = document.getElementById('previewCanvas');
@@ -845,7 +885,7 @@ function generatePage(slug, icon) {
         var activeBlobUrl = null;
 
         function getVariantPath(vKey) {
-            return iconData.variants[vKey] || iconData.variants.default;
+            return iconData.variants[vKey] || iconData.variants.original || iconData.variants.default || Object.values(iconData.variants)[0];
         }
 
         function cleanSvg(svgText) {
@@ -873,7 +913,7 @@ function generatePage(slug, icon) {
             }
             
             // 2. Scan for style="fill:..." or style="stroke:..." properties
-            var styleRegex = /(?:fill|stroke)\\\\s*:\\\\s*([^;"}]+)/gi;
+            var styleRegex = /(?:fill|stroke)\\s*:\\s*([^;"}]+)/gi;
             while ((match = styleRegex.exec(svgText)) !== null) {
                 var val = match[1].trim().replace(/['"]/g, '');
                 if (val && val.toLowerCase() !== 'none' && val.toLowerCase() !== 'transparent' && !/^url\\(/i.test(val)) {
@@ -1043,13 +1083,10 @@ function generatePage(slug, icon) {
             var blob = new Blob([recolored], { type: 'image/svg+xml;charset=utf-8' });
             activeBlobUrl = window.URL.createObjectURL(blob);
 
-            // Update active preview image in real-time
-            variantKeys.forEach(function (k) {
-                var img = previewEl.querySelector('[data-variant-img="' + k + '"]');
-                if (k === selectedVariant && img) {
-                    img.src = activeBlobUrl;
-                }
-            });
+            var img = previewEl.querySelector('[data-variant-img="main"]');
+            if (img) {
+                img.src = activeBlobUrl;
+            }
         }
 
         function initializeColors(svgText) {
@@ -1101,40 +1138,27 @@ function generatePage(slug, icon) {
             });
         }
 
-        function updatePreview() {
-            var activePath = getVariantPath(selectedVariant);
-            variantKeys.forEach(function (k) {
-                var img = previewEl.querySelector('[data-variant-img="' + k + '"]');
-                if (img) img.classList.toggle('active', k === selectedVariant);
-            });
-            fetchSvgCode(activePath);
-        }
+        function fetchSvgCode(path) {
+            function processSvg(rawTxt) {
+                var cleaned = cleanSvg(rawTxt);
+                svgCodeEl.textContent = cleaned;
+                initializeColors(cleaned);
+            }
 
-        function positionSlider(btn) {
-            var ind = document.getElementById('variantSliderIndicator');
-            ind.style.width = btn.offsetWidth + 'px';
-            ind.style.transform = 'translateX(' + (btn.offsetLeft - 3) + 'px)';
-        }
-
-        function fetchSvgCode(variantPath) {
-            // Serve from cache immediately if already fetched — zero network cost
-            if (svgCache.has(variantPath)) {
-                var cached = svgCache.get(variantPath);
-                svgCodeEl.textContent = cached;
-                initializeColors(cached);
+            if (svgCache.has(path)) {
+                processSvg(svgCache.get(path));
                 return;
             }
             svgCodeEl.textContent = 'Loading...';
-            fetch(variantPath).then(function (r) {
+            fetch(path).then(function (r) {
                 if (!r.ok) throw new Error();
                 return r.text();
             }).then(function (txt) {
                 var cleaned = cleanSvg(txt);
-                svgCache.set(variantPath, cleaned);
-                svgCodeEl.textContent = cleaned;
-                initializeColors(cleaned);
+                svgCache.set(path, cleaned);
+                processSvg(cleaned);
             }).catch(function () {
-                svgCodeEl.textContent = '<!-- SVG source unavailable -->\\n<svg src="' + variantPath + '"></svg>';
+                svgCodeEl.textContent = '<!-- SVG source unavailable -->\\n<svg src="' + path + '"></svg>';
             });
         }
 
@@ -1182,21 +1206,6 @@ function generatePage(slug, icon) {
             });
         }
 
-        // ── Variant picker ──
-        var picker = document.getElementById('variantPicker');
-        picker.querySelectorAll('.variant-btn:not(.disabled)').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                selectedVariant = btn.dataset.variant;
-                picker.querySelectorAll('.variant-btn').forEach(function (b) {
-                    b.classList.toggle('active', b.dataset.variant === selectedVariant);
-                });
-                positionSlider(btn);
-                updatePreview();
-            });
-        });
-        var activeBtn = picker.querySelector('.variant-btn.active');
-        if (activeBtn) positionSlider(activeBtn);
-
         // ── Background toggles ──
         document.getElementById('btnLightBg').addEventListener('click', function () {
             previewEl.style.backgroundColor = '#ffffff';
@@ -1229,6 +1238,35 @@ function generatePage(slug, icon) {
                 document.querySelectorAll('.size-btn').forEach(function (b) { b.classList.remove('active'); });
             }
         });
+
+        // ── Variant Picker Handler ──
+        var variantPicker = document.getElementById('variantPicker');
+        if (variantPicker) {
+            var vBtns = variantPicker.querySelectorAll('.variant-btn');
+            var indicator = document.getElementById('variantSliderIndicator');
+            function updateSlider(btn) {
+                if (!indicator || !btn) return;
+                indicator.style.width = btn.offsetWidth + 'px';
+                indicator.style.transform = 'translateX(' + (btn.offsetLeft - 3) + 'px)';
+            }
+            vBtns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    vBtns.forEach(function (b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    selectedVariant = btn.dataset.variant;
+                    updateSlider(btn);
+
+                    var activePath = getVariantPath(selectedVariant);
+                    variantKeys.forEach(function (k) {
+                        var img = previewEl.querySelector('[data-variant-img="' + k + '"]');
+                        if (img) img.classList.toggle('active', k === selectedVariant);
+                    });
+                    fetchSvgCode(activePath);
+                });
+            });
+            var activeBtn = variantPicker.querySelector('.variant-btn.active');
+            if (activeBtn) setTimeout(function () { updateSlider(activeBtn); }, 50);
+        }
 
         // ── Format selector ──
         document.querySelectorAll('.format-btn').forEach(function (btn) {
@@ -1270,7 +1308,7 @@ function generatePage(slug, icon) {
 
         // ── Download (single) ──
         document.getElementById('btnDownload').addEventListener('click', function () {
-            var fname = getNameVariants(downloadBase) + '-' + selectedVariant + '.' + selectedFormat;
+            var fname = getNameVariants(downloadBase) + '-default.' + selectedFormat;
 
             if (selectedFormat === 'svg') {
                 var blob = new Blob([currentSvgText], { type: 'image/svg+xml;charset=utf-8' });
@@ -1288,7 +1326,7 @@ function generatePage(slug, icon) {
         document.getElementById('btnCopySvg').addEventListener('click', function () {
             var code = svgCodeEl.textContent;
             if (!code || code.startsWith('Loading') || code.startsWith('<!-- SVG source unavailable')) {
-                var path = getVariantPath(selectedVariant);
+                var path = getDefaultPath();
                 fetchSvg(path).then(function (svg) { return copyToClipboard(svg); })
                     .then(function () { showToast('Copied SVG code!'); })
                     .catch(function () { showToast('Failed to copy'); });
@@ -1300,38 +1338,26 @@ function generatePage(slug, icon) {
 
         // ── Copy Path ──
         document.getElementById('btnCopyPath').addEventListener('click', function () {
-            var p = getVariantPath(selectedVariant);
+            var p = getDefaultPath();
             copyToClipboard(p).then(function () { showToast('Copied path'); })
                 .catch(function () { showToast('Failed to copy path'); });
         });
 
         // ── Download All ──
         document.getElementById('btnDownloadAll').addEventListener('click', function () {
-            var done = 0;
-            var failed = 0;
-            var total = 0;
-
-            variantKeys.forEach(function (k) {
-                var path = iconData.variants[k];
-                if (!path) return;
-                total++;
-                fetchSvg(path).then(function (svg) {
-                    var fname = getNameVariants(downloadBase) + '-' + k + '.svg';
-                    var blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
-                    triggerDownload(fname, blob);
-                    done++;
-                    if (done + failed === total) {
-                        showToast('Downloaded ' + done + ' of ' + total + ' variants');
-                    }
-                }).catch(function () {
-                    failed++;
-                    if (done + failed === total) {
-                        showToast('Downloaded ' + done + ' of ' + total + ' variants');
-                    }
-                });
+            var path = iconData.variants.main;
+            if (!path) {
+                showToast('No variants available');
+                return;
+            }
+            fetchSvg(path).then(function (svg) {
+                var fname = getNameVariants(downloadBase) + '-default.svg';
+                var blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+                triggerDownload(fname, blob);
+                showToast('Downloaded default variant');
+            }).catch(function () {
+                showToast('Download failed');
             });
-
-            if (total === 0) showToast('No variants available');
         });
 
         // ── Favourite ──
@@ -1366,7 +1392,7 @@ function generatePage(slug, icon) {
         }
 
         // ── Init ──
-        fetchSvgCode(getVariantPath('default'));
+        fetchSvgCode(getDefaultPath());
     </script>
 </body>
 </html>`;
@@ -1386,7 +1412,7 @@ var errors = [];
 for (var i = 0; i < icons.length; i++) {
     try {
         var icon = icons[i];
-        var defaultPath = icon.variants.default;
+        var defaultPath = icon.variants.original || icon.variants.default || Object.values(icon.variants)[0];
         var parts = defaultPath.split('/');
         var slug = parts[2];
         if (!slug) {

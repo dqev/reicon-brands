@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DC Entertainment Logo SVG, PNG &amp; Vector Icon Free Download | Reicon</title>
-    <meta name="description" content="Download the official DC Entertainment logo in SVG, vector, and high-resolution PNG formats for free. Scalable DC Entertainment Software, Platform icon available in official brand color (#0078F0), default, black, and white variants for websites, apps, and design projects.">
+    <meta name="description" content="Free DC Entertainment logo SVG vector icon download. Scalable company logo icon in original brand colors (#0078F0). Category: Software, Platform.">
     <meta name="keywords" content="DC Entertainment logo, DC Entertainment svg, DC Entertainment png, DC Entertainment vector, DC Entertainment brand icon, download DC Entertainment logo">
     <link rel="canonical" href="https://brands.reicon.dev/icon/dc-entertainment/">
 
@@ -17,7 +17,7 @@
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="DC Entertainment Logo SVG, PNG &amp; Vector Icon Free Download">
-    <meta property="og:description" content="Download free DC Entertainment logo in SVG, PNG, and vector formats. Official high-res DC Entertainment brand icon with custom color variants.">
+    <meta property="og:description" content="Download free DC Entertainment logo in SVG, PNG, and vector formats. Official high-res DC Entertainment brand icon.">
     <meta property="og:url" content="https://brands.reicon.dev/icon/dc-entertainment/">
     <meta property="og:site_name" content="Brands by Reicon.dev">
     <meta property="og:image" content="https://brands.reicon.dev/favicon/og-image.png">
@@ -26,15 +26,15 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="DC Entertainment Logo SVG, PNG &amp; Vector Icon Free Download">
-    <meta name="twitter:description" content="Download free DC Entertainment logo in SVG, PNG, and vector formats. Official high-res DC Entertainment brand icon with custom color variants.">
+    <meta name="twitter:description" content="Download free DC Entertainment logo in SVG, PNG, and vector formats. Official high-res DC Entertainment brand icon.">
     <meta name="twitter:image" content="https://brands.reicon.dev/favicon/og-image.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Brands","item":"https://brands.reicon.dev/"},{"@type":"ListItem","position":2,"name":"DC Entertainment","item":"https://brands.reicon.dev/icon/dc-entertainment/"}]}</script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ImageObject","contentUrl":"https://brands.reicon.dev/icons/dc-entertainment/default.svg","name":"DC Entertainment Logo SVG & Vector Icon","description":"Official DC Entertainment logo SVG vector download in high quality PNG, black, white, and brand color variants.","encodingFormat":"image/svg+xml","keywords":"DC Entertainment logo, DC Entertainment svg, DC Entertainment png, DC Entertainment vector, DC Entertainment brand icon, DC Entertainment download"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Brands", "item": "https://brands.reicon.dev/"}, {"@type": "ListItem", "position": 2, "name": "DC Entertainment", "item": "https://brands.reicon.dev/icon/dc-entertainment/"}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ImageObject", "contentUrl": "https://brands.reicon.dev/icons/dc-entertainment/original.svg", "name": "DC Entertainment Logo SVG & Vector Icon", "description": "Official DC Entertainment logo SVG vector download in high quality PNG.", "encodingFormat": "image/svg+xml", "keywords": "DC Entertainment logo, DC Entertainment svg, DC Entertainment png, DC Entertainment vector, DC Entertainment brand icon, DC Entertainment download"}</script>
 
     <style>
         :root {
@@ -228,12 +228,14 @@
         }
         @media (max-width:480px) {
             .preview-canvas { min-height: 180px; }
-            .preview-canvas-image { max-width: 35%; max-height: 35%; }
+            .preview-canvas-image { width: 64px; height: 64px; }
         }
         .preview-canvas-image {
             position: absolute;
-            max-width: 45%;
-            max-height: 45%;
+            width: 80px;
+            height: 80px;
+            max-width: 70%;
+            max-height: 70%;
             object-fit: contain;
             transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 0;
@@ -383,34 +385,67 @@
         .color-dot { width: 14px; height: 14px; border-radius: 50%; border: none; flex-shrink: 0; }
         .meta-link { color: inherit; text-decoration: underline; }
 
-        .code-block-section {
+        .code-card-outer {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 10px 5px 5px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 10px;
             width: 100%;
         }
-        .code-block-header {
-            font-size: 9.5px;
+        .code-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+        .code-card-title {
+            font-size: 10px;
             font-weight: 600;
+            letter-spacing: 0.08em;
             color: var(--body-muted);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+        }
+        .code-copy-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: transparent;
+            color: var(--body-muted);
+            border: none;
+            cursor: pointer;
+            transition: background var(--duration-smooth) var(--ease-smooth), color var(--duration-smooth) var(--ease-smooth), transform 0.15s ease;
+        }
+        .code-copy-btn:hover {
+            background: var(--card-hover-bg);
+            color: var(--heading);
+            transform: scale(1.06);
+        }
+        .code-card-inner {
+            background: #08080a;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 14px 16px;
+            overflow-x: auto;
+            overflow-y: auto;
+            max-height: 220px;
         }
         .code-container {
-            background-color: #121214;
-            border: none;
-            border-radius: 14px;
-            padding: 14px;
-            max-height: 200px;
-            overflow: auto;
-            font-family: ui-monospace, SFMono-Regular, SF Pro Mono, Menlo, Monaco, Consolas, monospace;
-            font-size: 11px;
-            color: #d4d4d8;
+            font-family: ui-monospace, SFMono-Regular, "SF Pro Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 11.5px;
+            line-height: 1.6;
+            color: #e4e4e7;
             white-space: pre-wrap;
             word-break: break-all;
-            line-height: 1.5;
-            -webkit-font-smoothing: auto;
+            margin: 0;
         }
+        .token-tag { color: #f43f5e; font-weight: 500; }
+        .token-attr { color: #c084fc; }
+        .token-val { color: #4ade80; }
 
         .actions-grid {
             display: grid;
@@ -488,35 +523,6 @@
             font-weight: 500;
             color: var(--body-muted);
             min-width: 48px;
-        }
-
-        .color-picker-wrap {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .color-picker-wrap input[type="color"] {
-            width: 32px;
-            height: 32px;
-            padding: 0;
-            border: none;
-            border-radius: 100px;
-            cursor: pointer;
-            background: none;
-        }
-        .color-picker-wrap input[type="text"] {
-            width: 84px;
-            padding: 6px 10px;
-            border: none;
-            border-radius: 100px;
-            font-size: 12px;
-            font-family: inherit;
-            background: var(--background);
-            color: var(--heading);
-            text-align: center;
-        }
-        .color-picker-wrap input[type="text"]:focus {
-            outline: none;
         }
 
         .size-presets {
@@ -598,8 +604,10 @@
         @media (max-width: 480px) {
             .brand-title { font-size: 18px; }
             .preview-canvas { min-height: 180px; }
-            .preview-canvas-image { max-width: 35%; max-height: 35%; }
-            .code-container { max-height: 140px; }
+            .preview-canvas-image { width: 64px; height: 64px; }
+            .code-card-outer { padding: 8px 4px 4px; border-radius: 14px; }
+            .code-card-inner { padding: 10px 12px; border-radius: 10px; max-height: 170px; }
+            .code-container { font-size: 11px; line-height: 1.5; }
             .page-layout { gap: 20px; }
         }
     </style>
@@ -635,32 +643,22 @@
             <div class="page-layout">
                 <div class="visual-section">
                     <div class="preview-canvas" id="previewCanvas">
-                        <img src="/icons/dc-entertainment/default.svg" class="preview-canvas-image active" data-variant-img="default" alt="DC Entertainment logo default variant SVG" crossorigin="anonymous">
-                        <img src="/icons/dc-entertainment/brand.svg" class="preview-canvas-image" data-variant-img="brand" alt="DC Entertainment logo brand variant SVG" crossorigin="anonymous">
-                        <img src="/icons/dc-entertainment/black.svg" class="preview-canvas-image" data-variant-img="black" alt="DC Entertainment logo black variant SVG" crossorigin="anonymous">
-                        <img src="/icons/dc-entertainment/white.svg" class="preview-canvas-image" data-variant-img="white" alt="DC Entertainment logo white variant SVG" crossorigin="anonymous">
+                        <img src="/icons/dc-entertainment/original.svg" class="preview-canvas-image active" data-variant-img="original" alt="DC Entertainment logo original variant SVG" crossorigin="anonymous">
                         <div class="canvas-bg-toggle">
                             <button class="bg-toggle-btn btn-light" id="btnLightBg" title="Light background"></button>
                             <button class="bg-toggle-btn btn-grid" id="btnGridBg" title="Grid background"></button>
                             <button class="bg-toggle-btn btn-dark" id="btnDarkBg" title="Dark background"></button>
                         </div>
                     </div>
-
-                    <div class="variant-picker" id="variantPicker">
-                        <div class="variant-slider-indicator" id="variantSliderIndicator"></div>
-                        <button class="variant-btn active" data-variant="default">default</button>
-                        <button class="variant-btn" data-variant="brand">brand</button>
-                        <button class="variant-btn" data-variant="black">black</button>
-                        <button class="variant-btn" data-variant="white">white</button>
-                    </div>
+                    
 
                     <div class="tool-section">
                         <div class="tool-section-title">Customize</div>
 
                         <div class="tool-row" id="colorPickerSection" style="display: flex; flex-direction: column; gap: 8px; align-items: stretch; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 12px;">
                             <span class="tool-label" style="margin-bottom: 4px;">Colors</span>
-                            <div id="colorsContainer" style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
-                                <!-- Dynamic Color Pickers dynamically rendered -->
+                            <div id="colorsContainer" style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; width: 100%;">
+                                <!-- Dynamic Circular Color Pickers -->
                             </div>
                         </div>
 
@@ -672,16 +670,16 @@
                                 <button class="size-btn" data-size="128">128</button>
                                 <button class="size-btn" data-size="256">256</button>
                                 <button class="size-btn" data-size="512">512</button>
-                                <input type="number" class="size-custom" id="customSizeInput" placeholder="px" min="16" max="4096">
+                                <input type="number" class="size-custom" id="customSizeInput" placeholder="Custom" min="16" max="4096">
                             </div>
                         </div>
 
                         <div class="tool-row">
                             <span class="tool-label">Format</span>
-                            <div class="format-btn-group" id="formatGroup">
+                            <div class="format-btn-group">
                                 <button class="format-btn active" data-format="svg">SVG</button>
                                 <button class="format-btn" data-format="png">PNG</button>
-                                <button class="format-btn" data-format="webp">WebP</button>
+                                <button class="format-btn" data-format="webp">WEBP</button>
                             </div>
                         </div>
                     </div>
@@ -693,54 +691,58 @@
                             <h1 class="brand-title">DC Entertainment</h1>
                             <span class="collection-badge">brands</span>
                         </div>
-                        <div class="brand-categories"><span class="category-badge">Software</span>
-                            <span class="category-badge">Platform</span></div>
+                        <div class="brand-categories">
+                            <span class="category-badge">Software</span>
+                            <span class="category-badge">Platform</span>
+                        </div>
                     </div>
 
                     <div class="meta-table">
                         <div class="meta-row">
-                            <span class="meta-label">Primary Color</span>
+                            <span class="meta-label">Color</span>
                             <span class="meta-value">
-                                <span class="color-dot" style="background-color:#0078F0"></span>
-                                <span>#0078F0</span>
+                                <span class="color-dot" style="background-color: #0078F0;"></span>
+                                #0078F0
                             </span>
                         </div>
                         <div class="meta-row">
-                            <span class="meta-label">Official Link</span>
+                            <span class="meta-label">Official URL</span>
                             <span class="meta-value"><a href="https://www.readdc.com" target="_blank" rel="noopener noreferrer" class="meta-link">readdc.com</a></span>
                         </div>
-                        <div class="meta-row">
-                            <span class="meta-label">Variants</span>
-                            <span class="meta-value">default, brand, black, white</span>
-                        </div>
-                    </div>
-
-                    <div class="code-block-section">
-                        <div class="code-block-header"><span>SVG Source Code</span></div>
-                        <div class="code-container" id="svgCodeContainer">Loading...</div>
                     </div>
 
                     <div class="actions-grid">
                         <button class="action-button action-button-primary" id="btnDownload">
-                            <svg viewBox="0 0 24 24"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path><path d="M7 11l5 5l5 -5"></path><path d="M12 4l0 12"></path></svg>
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                             <span id="downloadBtnLabel">Download SVG</span>
                         </button>
-                        <button class="action-button" id="btnCopySvg">
-                            <svg viewBox="0 0 24 24"><path d="M8 8m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"></path><path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path></svg>
-                            <span>Copy SVG</span>
+
+                        <button class="action-button" id="btnCopyCode" title="Copy raw SVG code">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            <span>Code</span>
                         </button>
-                        <button class="action-button" id="btnCopyPath">
-                            <svg viewBox="0 0 24 24"><path d="M9 15l6 -6"></path><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464"></path><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463"></path></svg>
-                            <span>Copy Path</span>
+
+                        <button class="action-button" id="btnCopyPath" title="Copy SVG d path attribute">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                            <span>Path</span>
                         </button>
-                        <button class="action-button" id="btnDownloadAll">
-                            <svg viewBox="0 0 24 24"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path><path d="M7 11l5 5l5 -5"></path><path d="M12 4l0 12"></path></svg>
-                            <span>Download All</span>
-                        </button>
-                        <button class="action-button" id="btnFavourite">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8.10627 18.2468C5.29819 16.0833 2 13.5422 2 9.1371C2 4.27416 7.50016 0.825464 12 5.50063L14 7.49928C14.2929 7.79212 14.7678 7.79203 15.0607 7.49908C15.3535 7.20614 15.3534 6.73127 15.0605 6.43843L13.1285 4.50712C17.3685 1.40309 22 4.67465 22 9.1371C22 13.5422 18.7018 16.0833 15.8937 18.2468C15.6019 18.4717 15.3153 18.6925 15.0383 18.9109C14 19.7294 13 20.5 12 20.5C11 20.5 10 19.7294 8.96173 18.9109C8.68471 18.6925 8.39814 18.4717 8.10627 18.2468Z"/></svg>
+
+                        <button class="action-button" id="btnFavourite" title="Save to Favourites">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                             <span id="favLabelSpan">Favourite</span>
                         </button>
+                    </div>
+
+                    <div class="code-card-outer">
+                        <div class="code-card-header">
+                            <span class="code-card-title">SVG Code</span>
+                            <button class="code-copy-btn" id="btnCopyCodeHeader" title="Copy SVG Code">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            </button>
+                        </div>
+                        <div class="code-card-inner">
+                            <pre class="code-container" id="svgCodeContainer">Loading...</pre>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -753,11 +755,11 @@
     </div>
 
     <script>
-        var iconData = {"name":"DC Entertainment","hex":"0078F0","categories":["Software","Platform"],"variants":{"default":"/icons/dc-entertainment/default.svg","brand":"/icons/dc-entertainment/brand.svg","black":"/icons/dc-entertainment/black.svg","white":"/icons/dc-entertainment/white.svg"},"url":"https://www.readdc.com","collection":"brands"};
-        var selectedVariant = 'default';
+        var iconData = {"name": "DC Entertainment", "hex": "0078F0", "categories": ["Software", "Platform"], "variants": {"original": "/icons/dc-entertainment/original.svg"}, "url": "https://www.readdc.com", "collection": "brands"};
+        var selectedVariant = 'original';
         var selectedFormat = 'svg';
         var selectedSize = 64;
-        var variantKeys = ['default', 'brand', 'black', 'white'];
+        var variantKeys = Object.keys(iconData.variants);
         var downloadBase = 'dc-entertainment';
 
         var previewEl = document.getElementById('previewCanvas');
@@ -770,13 +772,11 @@
         var originalColors = [];
         var customSizeInput = document.getElementById('customSizeInput');
 
-        // ── In-memory SVG cache: each path fetched at most once per page session ──
         var svgCache = new Map();
-        // Track the current active blob URL so we can revoke the previous one on color change
         var activeBlobUrl = null;
 
         function getVariantPath(vKey) {
-            return iconData.variants[vKey] || iconData.variants.default;
+            return iconData.variants[vKey] || iconData.variants.original || iconData.variants.default || Object.values(iconData.variants)[0];
         }
 
         function cleanSvg(svgText) {
@@ -788,33 +788,45 @@
             return svgText.replace(re1, '').replace(re2, '').trim();
         }
 
+        function normalizeColor(colorStr) {
+            if (!colorStr) return '';
+            var c = colorStr.trim().replace(/['"]/g, '');
+            if (!c || c.toLowerCase() === 'none' || c.toLowerCase() === 'transparent' || /^url\(/i.test(c)) {
+                return '';
+            }
+            if (/^#[0-9a-f]{3}$/i.test(c)) {
+                c = '#' + c[1] + c[1] + c[2] + c[2] + c[3] + c[3];
+            }
+            return c;
+        }
+
         function extractColorsFromSvg(svgText) {
-            var colors = [];
+            if (!svgText) return [];
+            var rawColors = [];
+            var seen = {};
+
+            // 1. Scan fill, stroke, stop-color, color attributes
+            var attrRegex = /(?:fill|stroke|stop-color|color)\s*=\s*["']?([^"'>\s]+)["']?/gi;
             var match;
-            
-            // 1. Scan for fill="..." or stroke="..." attributes
-            var attrRegex = /(?:fill|stroke)="([^"]+)"/gi;
             while ((match = attrRegex.exec(svgText)) !== null) {
-                var val = match[1].trim();
-                if (val && val.toLowerCase() !== 'none' && val.toLowerCase() !== 'transparent' && !/^url\(/i.test(val)) {
-                    if (colors.indexOf(val) === -1) {
-                        colors.push(val);
-                    }
+                var norm = normalizeColor(match[1]);
+                if (norm && !seen[norm.toLowerCase()]) {
+                    seen[norm.toLowerCase()] = true;
+                    rawColors.push(norm);
                 }
             }
-            
-            // 2. Scan for style="fill:..." or style="stroke:..." properties
-            var styleRegex = /(?:fill|stroke)\\s*:\\s*([^;"}]+)/gi;
+
+            // 2. Scan style properties
+            var styleRegex = /(?:fill|stroke|stop-color|color)\s*:\s*([^;"}\s]+)/gi;
             while ((match = styleRegex.exec(svgText)) !== null) {
-                var val = match[1].trim().replace(/['"]/g, '');
-                if (val && val.toLowerCase() !== 'none' && val.toLowerCase() !== 'transparent' && !/^url\(/i.test(val)) {
-                    if (colors.indexOf(val) === -1) {
-                        colors.push(val);
-                    }
+                var normStyle = normalizeColor(match[1]);
+                if (normStyle && !seen[normStyle.toLowerCase()]) {
+                    seen[normStyle.toLowerCase()] = true;
+                    rawColors.push(normStyle);
                 }
             }
-            
-            return colors;
+
+            return rawColors;
         }
 
         function expandHex(hex) {
@@ -830,25 +842,9 @@
             if (name === 'currentcolor') return '#ffffff';
             
             var namedColors = {
-                'black': '#000000',
-                'white': '#ffffff',
-                'red': '#ff0000',
-                'green': '#00ff00',
-                'blue': '#0000ff',
-                'yellow': '#ffff00',
-                'magenta': '#ff00ff',
-                'fuchsia': '#ff00ff',
-                'cyan': '#00ffff',
-                'aqua': '#00ffff',
-                'gray': '#808080',
-                'grey': '#808080',
-                'silver': '#c0c0c0',
-                'gold': '#ffd700',
-                'orange': '#ffa500',
-                'purple': '#800080',
-                'indigo': '#4b0082',
-                'violet': '#ee82ee',
-                'pink': '#ffc0cb'
+                'black': '#000000', 'white': '#ffffff', 'red': '#ff0000', 'green': '#00ff00', 'blue': '#0000ff',
+                'yellow': '#ffff00', 'magenta': '#ff00ff', 'fuchsia': '#ff00ff', 'cyan': '#00ffff', 'aqua': '#00ffff',
+                'gray': '#808080', 'grey': '#808080', 'silver': '#c0c0c0', 'gold': '#ffd700', 'orange': '#ffa500', 'purple': '#800080'
             };
             return namedColors[name] || '#ffffff';
         }
@@ -864,80 +860,52 @@
             }
 
             colors.forEach(function (color, index) {
-                var row = document.createElement('div');
-                row.style.display = 'flex';
-                row.style.alignItems = 'center';
-                row.style.justifyContent = 'space-between';
-                row.style.gap = '12px';
-                row.style.padding = '6px 8px';
-                row.style.borderRadius = '6px';
-                row.style.background = 'rgba(255,255,255,0.03)';
-                row.style.border = '1px solid var(--border)';
+                var hex = getHexColor(color);
+                var displayLabel = color.startsWith('#') ? color.toUpperCase() : color;
 
-                var label = document.createElement('span');
-                label.style.fontSize = '11.5px';
-                label.style.color = 'var(--body-muted)';
-                
-                var displayLabel = color;
-                if (color.startsWith('#')) {
-                    displayLabel = color.toUpperCase();
-                } else if (color === 'currentColor') {
-                    displayLabel = 'Base (CurrentColor)';
-                } else {
-                    displayLabel = color.charAt(0).toUpperCase() + color.slice(1);
-                }
-                label.textContent = 'Layer ' + (index + 1) + ' (' + displayLabel + ')';
-
-                var pickerWrap = document.createElement('div');
-                pickerWrap.style.display = 'flex';
-                pickerWrap.style.alignItems = 'center';
-                pickerWrap.style.gap = '6px';
+                var dot = document.createElement('div');
+                dot.style.position = 'relative';
+                dot.style.width = '30px';
+                dot.style.height = '30px';
+                dot.style.borderRadius = '50%';
+                dot.style.background = hex;
+                dot.style.border = '2px solid var(--border)';
+                dot.style.boxShadow = '0 2px 5px rgba(0,0,0,0.18)';
+                dot.style.cursor = 'pointer';
+                dot.style.transition = 'transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.18s ease, box-shadow 0.18s ease';
+                dot.style.flexShrink = '0';
+                dot.title = 'Layer ' + (index + 1) + ': ' + displayLabel;
 
                 var inputColor = document.createElement('input');
                 inputColor.type = 'color';
-                inputColor.value = getHexColor(color);
-                inputColor.style.width = '24px';
-                inputColor.style.height = '24px';
-                inputColor.style.border = 'none';
-                inputColor.style.padding = '0';
-                inputColor.style.background = 'none';
+                inputColor.value = hex;
+                inputColor.style.position = 'absolute';
+                inputColor.style.top = '-4px';
+                inputColor.style.left = '-4px';
+                inputColor.style.width = '38px';
+                inputColor.style.height = '38px';
+                inputColor.style.opacity = '0';
                 inputColor.style.cursor = 'pointer';
 
-                var inputText = document.createElement('input');
-                inputText.type = 'text';
-                inputText.value = color.startsWith('#') ? color.toUpperCase() : color;
-                inputText.style.width = '80px';
-                inputText.style.height = '24px';
-                inputText.style.padding = '0 6px';
-                inputText.style.fontSize = '11px';
-                inputText.style.border = '1px solid var(--border)';
-                inputText.style.borderRadius = '4px';
-                inputText.style.background = 'var(--card-bg)';
-                inputText.style.color = 'var(--heading)';
+                dot.addEventListener('mouseenter', function () {
+                    this.style.transform = 'scale(1.18)';
+                    this.style.borderColor = 'var(--heading)';
+                    this.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+                });
+                dot.addEventListener('mouseleave', function () {
+                    this.style.transform = 'scale(1)';
+                    this.style.borderColor = 'var(--border)';
+                    this.style.boxShadow = '0 2px 5px rgba(0,0,0,0.18)';
+                });
 
                 inputColor.addEventListener('input', function () {
-                    inputText.value = this.value.toUpperCase();
+                    dot.style.background = this.value;
+                    dot.title = 'Layer ' + (index + 1) + ': ' + this.value.toUpperCase();
                     updateRecoloredSvg();
                 });
 
-                inputText.addEventListener('input', function () {
-                    var val = this.value.trim().toLowerCase();
-                    if (/^#[0-9a-f]{3}$|^#[0-9a-f]{6}$/.test(val)) {
-                        inputColor.value = expandHex(val);
-                        updateRecoloredSvg();
-                    } else if (val === 'currentcolor' || val === 'white' || val === 'black' || val === 'red' || val === 'green' || val === 'blue') {
-                        inputColor.value = getHexColor(val);
-                        updateRecoloredSvg();
-                    }
-                });
-
-                pickerWrap.appendChild(inputColor);
-                pickerWrap.appendChild(inputText);
-
-                row.appendChild(label);
-                row.appendChild(pickerWrap);
-
-                container.appendChild(row);
+                dot.appendChild(inputColor);
+                container.appendChild(dot);
             });
         }
 
@@ -945,21 +913,19 @@
             var recolored = originalSvgText;
             var container = document.getElementById('colorsContainer');
             if (!container) return;
-            var rows = container.children;
+            var dots = container.children;
 
             originalColors.forEach(function (origColor, index) {
-                var row = rows[index];
-                if (!row) return;
-                var inputColor = row.querySelector('input[type="color"]');
+                var dot = dots[index];
+                if (!dot) return;
+                var inputColor = dot.querySelector('input[type="color"]');
                 var newColor = inputColor.value;
 
-                var escapedColor = origColor.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+                var escapedColor = origColor.replace(/[-\/\\^$*+?.()|[\\]{}]/g, '\\$&');
 
-                // 1. Replace in fill="..." or stroke="..."
                 var attrRegex = new RegExp('(fill|stroke)="' + escapedColor + '"', 'gi');
                 recolored = recolored.replace(attrRegex, '$1="' + newColor + '"');
 
-                // 2. Replace in fill:... or stroke:... styles
                 var styleRegex = new RegExp('(fill|stroke)\\s*:\\s*' + escapedColor, 'gi');
                 recolored = recolored.replace(styleRegex, '$1: ' + newColor);
             });
@@ -967,20 +933,16 @@
             currentSvgText = recolored;
             svgCodeEl.textContent = recolored;
 
-            // Revoke the previous blob URL before creating a new one (prevents memory leak)
             if (activeBlobUrl) {
                 window.URL.revokeObjectURL(activeBlobUrl);
             }
             var blob = new Blob([recolored], { type: 'image/svg+xml;charset=utf-8' });
             activeBlobUrl = window.URL.createObjectURL(blob);
 
-            // Update active preview image in real-time
-            variantKeys.forEach(function (k) {
-                var img = previewEl.querySelector('[data-variant-img="' + k + '"]');
-                if (k === selectedVariant && img) {
-                    img.src = activeBlobUrl;
-                }
-            });
+            var activeImg = previewEl.querySelector('.preview-canvas-image.active') || previewEl.querySelector('.preview-canvas-image');
+            if (activeImg) {
+                activeImg.src = activeBlobUrl;
+            }
         }
 
         function initializeColors(svgText) {
@@ -990,27 +952,6 @@
             renderColorPickers(originalColors);
         }
 
-        function copyToClipboard(text) {
-            if (navigator.clipboard && window.isSecureContext) {
-                return navigator.clipboard.writeText(text);
-            } else {
-                return new Promise(function (resolve, reject) {
-                    try {
-                        var ta = document.createElement('textarea');
-                        ta.value = text;
-                        ta.style.position = 'fixed';
-                        ta.style.opacity = '0';
-                        document.body.appendChild(ta);
-                        ta.focus();
-                        ta.select();
-                        var ok = document.execCommand('copy');
-                        document.body.removeChild(ta);
-                        if (ok) resolve(); else reject(new Error('copy failed'));
-                    } catch (e) { reject(e); }
-                });
-            }
-        }
-
         function showToast(msg) {
             toastTextEl.textContent = msg;
             toastEl.classList.add('show');
@@ -1018,54 +959,28 @@
             toastTimeout = setTimeout(function () { toastEl.classList.remove('show'); }, 2500);
         }
 
-        function fetchSvg(path) {
-            if (svgCache.has(path)) {
-                return Promise.resolve(svgCache.get(path));
+        function fetchSvgCode(path) {
+            function processSvg(rawTxt) {
+                var cleaned = cleanSvg(rawTxt);
+                currentSvgText = cleaned;
+                svgCodeEl.textContent = cleaned;
+                initializeColors(cleaned);
             }
-            return fetch(path).then(function (r) {
-                if (!r.ok) throw new Error('fetch failed');
-                return r.text();
-            }).then(function (t) {
-                var cleaned = cleanSvg(t);
-                svgCache.set(path, cleaned);
-                return cleaned;
-            });
-        }
 
-        function updatePreview() {
-            var activePath = getVariantPath(selectedVariant);
-            variantKeys.forEach(function (k) {
-                var img = previewEl.querySelector('[data-variant-img="' + k + '"]');
-                if (img) img.classList.toggle('active', k === selectedVariant);
-            });
-            fetchSvgCode(activePath);
-        }
-
-        function positionSlider(btn) {
-            var ind = document.getElementById('variantSliderIndicator');
-            ind.style.width = btn.offsetWidth + 'px';
-            ind.style.transform = 'translateX(' + (btn.offsetLeft - 3) + 'px)';
-        }
-
-        function fetchSvgCode(variantPath) {
-            // Serve from cache immediately if already fetched — zero network cost
-            if (svgCache.has(variantPath)) {
-                var cached = svgCache.get(variantPath);
-                svgCodeEl.textContent = cached;
-                initializeColors(cached);
+            if (svgCache.has(path)) {
+                processSvg(svgCache.get(path));
                 return;
             }
             svgCodeEl.textContent = 'Loading...';
-            fetch(variantPath).then(function (r) {
+            fetch(path).then(function (r) {
                 if (!r.ok) throw new Error();
                 return r.text();
             }).then(function (txt) {
                 var cleaned = cleanSvg(txt);
-                svgCache.set(variantPath, cleaned);
-                svgCodeEl.textContent = cleaned;
-                initializeColors(cleaned);
+                svgCache.set(path, cleaned);
+                processSvg(cleaned);
             }).catch(function () {
-                svgCodeEl.textContent = '<!-- SVG source unavailable -->\n<svg src="' + variantPath + '"></svg>';
+                svgCodeEl.textContent = '<!-- SVG source unavailable -->';
             });
         }
 
@@ -1113,21 +1028,6 @@
             });
         }
 
-        // ── Variant picker ──
-        var picker = document.getElementById('variantPicker');
-        picker.querySelectorAll('.variant-btn:not(.disabled)').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                selectedVariant = btn.dataset.variant;
-                picker.querySelectorAll('.variant-btn').forEach(function (b) {
-                    b.classList.toggle('active', b.dataset.variant === selectedVariant);
-                });
-                positionSlider(btn);
-                updatePreview();
-            });
-        });
-        var activeBtn = picker.querySelector('.variant-btn.active');
-        if (activeBtn) positionSlider(activeBtn);
-
         // ── Background toggles ──
         document.getElementById('btnLightBg').addEventListener('click', function () {
             previewEl.style.backgroundColor = '#ffffff';
@@ -1142,7 +1042,34 @@
             previewEl.style.backgroundImage = 'none';
         });
 
+        // ── Variant Picker Handler ──
+        var variantPicker = document.getElementById('variantPicker');
+        if (variantPicker) {
+            var vBtns = variantPicker.querySelectorAll('.variant-btn');
+            var indicator = document.getElementById('variantSliderIndicator');
+            function updateSlider(btn) {
+                if (!indicator || !btn) return;
+                indicator.style.width = btn.offsetWidth + 'px';
+                indicator.style.transform = 'translateX(' + (btn.offsetLeft - 3) + 'px)';
+            }
+            vBtns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    vBtns.forEach(function (b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    selectedVariant = btn.dataset.variant;
+                    updateSlider(btn);
 
+                    var activePath = getVariantPath(selectedVariant);
+                    variantKeys.forEach(function (k) {
+                        var img = previewEl.querySelector('[data-variant-img="' + k + '"]');
+                        if (img) img.classList.toggle('active', k === selectedVariant);
+                    });
+                    fetchSvgCode(activePath);
+                });
+            });
+            var activeBtn = variantPicker.querySelector('.variant-btn.active');
+            if (activeBtn) setTimeout(function () { updateSlider(activeBtn); }, 50);
+        }
 
         // ── Size presets ──
         document.querySelectorAll('.size-btn').forEach(function (btn) {
@@ -1177,25 +1104,13 @@
         if (copyUrlBtn) {
             copyUrlBtn.addEventListener('click', function () {
                 var url = window.location.href;
-                copyToClipboard(url).then(function () {
-                    var linkIcon = copyUrlBtn.querySelector('.link-icon');
-                    var checkIcon = copyUrlBtn.querySelector('.check-icon');
-                    if (linkIcon && checkIcon) {
-                        linkIcon.style.display = 'none';
-                        checkIcon.style.display = 'block';
-                        checkIcon.style.transform = 'scale(0.5)';
-                        checkIcon.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                        setTimeout(function () { checkIcon.style.transform = 'scale(1)'; }, 10);
-                        setTimeout(function () {
-                            checkIcon.style.transform = 'scale(0.5)';
-                            setTimeout(function () {
-                                checkIcon.style.display = 'none';
-                                linkIcon.style.display = 'block';
-                            }, 200);
-                        }, 1200);
-                    }
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(url).then(function() {
+                        showToast('Page URL copied!');
+                    });
+                } else {
                     showToast('Page URL copied!');
-                }).catch(function () { showToast('Failed to copy URL'); });
+                }
             });
         }
 
@@ -1210,77 +1125,56 @@
             } else {
                 svgToCanvas(currentSvgText, selectedSize, selectedFormat).then(function (blob) {
                     triggerDownload(fname, blob);
-                    showToast('Downloaded ' + fname);
-                }).catch(function () { showToast('Download failed'); });
+                    showToast('Downloaded ' + fname + ' (' + selectedSize + 'x' + selectedSize + ')');
+                }).catch(function () { showToast('Failed to generate ' + selectedFormat.toUpperCase()); });
             }
         });
 
         // ── Copy SVG Code ──
-        document.getElementById('btnCopySvg').addEventListener('click', function () {
-            var code = svgCodeEl.textContent;
-            if (!code || code.startsWith('Loading') || code.startsWith('<!-- SVG source unavailable')) {
-                var path = getVariantPath(selectedVariant);
-                fetchSvg(path).then(function (svg) { return copyToClipboard(svg); })
-                    .then(function () { showToast('Copied SVG code!'); })
-                    .catch(function () { showToast('Failed to copy'); });
-                return;
-            }
-            copyToClipboard(code).then(function () { showToast('Copied SVG code!'); })
-                .catch(function () { showToast('Failed to copy'); });
-        });
-
-        // ── Copy Path ──
-        document.getElementById('btnCopyPath').addEventListener('click', function () {
-            var p = getVariantPath(selectedVariant);
-            copyToClipboard(p).then(function () { showToast('Copied path'); })
-                .catch(function () { showToast('Failed to copy path'); });
-        });
-
-        // ── Download All ──
-        document.getElementById('btnDownloadAll').addEventListener('click', function () {
-            var done = 0;
-            var failed = 0;
-            var total = 0;
-
-            variantKeys.forEach(function (k) {
-                var path = iconData.variants[k];
-                if (!path) return;
-                total++;
-                fetchSvg(path).then(function (svg) {
-                    var fname = getNameVariants(downloadBase) + '-' + k + '.svg';
-                    var blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
-                    triggerDownload(fname, blob);
-                    done++;
-                    if (done + failed === total) {
-                        showToast('Downloaded ' + done + ' of ' + total + ' variants');
-                    }
-                }).catch(function () {
-                    failed++;
-                    if (done + failed === total) {
-                        showToast('Downloaded ' + done + ' of ' + total + ' variants');
-                    }
-                });
+        var copyCodeHeaderBtn = document.getElementById('btnCopyCodeHeader');
+        if (copyCodeHeaderBtn) {
+            copyCodeHeaderBtn.addEventListener('click', function () {
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(currentSvgText).then(function () { showToast('SVG Code copied!'); });
+                } else {
+                    showToast('SVG Code copied!');
+                }
             });
-
-            if (total === 0) showToast('No variants available');
+        }
+        document.getElementById('btnCopyCode').addEventListener('click', function () {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(currentSvgText).then(function () { showToast('SVG Code copied!'); });
+            } else {
+                showToast('SVG Code copied!');
+            }
         });
 
-        // ── Favourite ──
-        var favBtn = document.getElementById('btnFavourite');
-        var favourites = JSON.parse(localStorage.getItem('reicon_favourites') || '[]');
-
-        function updateFavBtn() {
-            var isFav = favourites.indexOf(iconData.name) > -1;
-            if (isFav) {
-                favBtn.classList.add('active');
-                document.getElementById('favLabelSpan').textContent = 'Favourited';
+        // ── Copy SVG Path ──
+        document.getElementById('btnCopyPath').addEventListener('click', function () {
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = currentSvgText;
+            var pathEl = tempDiv.querySelector('path');
+            if (pathEl && pathEl.getAttribute('d')) {
+                var d = pathEl.getAttribute('d');
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(d).then(function () { showToast('SVG Path copied!'); });
+                } else {
+                    showToast('SVG Path copied!');
+                }
             } else {
-                favBtn.classList.remove('active');
-                document.getElementById('favLabelSpan').textContent = 'Favourite';
+                showToast('No path data found');
             }
-        }
+        });
 
+        // ── Favourites ──
+        var favBtn = document.getElementById('btnFavourite');
         if (favBtn) {
+            var favourites = JSON.parse(localStorage.getItem('reicon_favourites') || '[]');
+            function updateFavBtn() {
+                var isFav = favourites.indexOf(iconData.name) > -1;
+                favBtn.style.color = isFav ? '#ff4757' : '';
+                document.getElementById('favLabelSpan').textContent = isFav ? 'Favourited' : 'Favourite';
+            }
             updateFavBtn();
             favBtn.addEventListener('click', function () {
                 var idx = favourites.indexOf(iconData.name);
@@ -1297,7 +1191,7 @@
         }
 
         // ── Init ──
-        fetchSvgCode(getVariantPath('default'));
+        fetchSvgCode(getVariantPath('original'));
     </script>
 </body>
 </html>

@@ -19,7 +19,7 @@ const urlList = [`${SITE_URL}/`];
 
 const seen = new Set();
 for (const icon of icons) {
-    const slug = icon.variants.default.split('/')[2];
+    const slug = icon.variants.main.split('/')[2];
     if (!seen.has(slug)) {
         seen.add(slug);
         urlList.push(`${SITE_URL}/icon/${slug}/`);

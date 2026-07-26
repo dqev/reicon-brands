@@ -6,14 +6,14 @@
 
 # Collection Overview
 title: Brands by Reicon.dev
-description: A collection of 4915 free SVG brand icons available in default, brand, black, and white variants.
+description: A collection of 4928 free SVG brand icons available for download.
 website: https://brands.reicon.dev
-total_icons: 4915
+total_icons: 4928
 
 # Icon Pages
-https://brands.reicon.dev/icon/net/
-https://brands.reicon.dev/icon/dotnet/
 https://brands.reicon.dev/icon/dotenv/
+https://brands.reicon.dev/icon/dotnet/
+https://brands.reicon.dev/icon/net/
 https://brands.reicon.dev/icon/e/
 https://brands.reicon.dev/icon/1dot1dot1dot1/
 https://brands.reicon.dev/icon/01dotai/
@@ -4926,3 +4926,16 @@ https://brands.reicon.dev/icon/eve/
 https://brands.reicon.dev/icon/grida/
 https://brands.reicon.dev/icon/ivy-framework/
 https://brands.reicon.dev/icon/postqued/
+https://brands.reicon.dev/icon/apache-kafka/
+https://brands.reicon.dev/icon/avanza/
+https://brands.reicon.dev/icon/dis-chem-pharmacies/
+https://brands.reicon.dev/icon/edison/
+https://brands.reicon.dev/icon/nextera-energy/
+https://brands.reicon.dev/icon/ngern-tid-lor/
+https://brands.reicon.dev/icon/oblio/
+https://brands.reicon.dev/icon/ralph-lauren/
+https://brands.reicon.dev/icon/s-oil/
+https://brands.reicon.dev/icon/smartbill/
+https://brands.reicon.dev/icon/the-lawyers-global/
+https://brands.reicon.dev/icon/wisetech-global/
+https://brands.reicon.dev/icon/yapi-kredi/

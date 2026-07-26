@@ -11,7 +11,8 @@ const icons = JSON.parse(fs.readFileSync(ICONS_JSON, 'utf-8'));
 const slugs = [];
 const seen = new Set();
 for (const icon of icons) {
-    const slug = icon.variants.default.split('/')[2];
+    const mainVar = icon.variants.original || icon.variants.default || Object.values(icon.variants)[0];
+    const slug = mainVar.split('/')[2];
     if (!seen.has(slug)) {
         seen.add(slug);
         slugs.push(slug);
@@ -42,7 +43,8 @@ function generateSitemaps() {
     const topSlugs = [];
     const regularSlugs = [];
     for (const icon of icons) {
-        const slug = icon.variants.default.split('/')[2];
+        const mainVar = icon.variants.original || icon.variants.default || Object.values(icon.variants)[0];
+        const slug = mainVar.split('/')[2];
         const isTop = topBrandNames.includes(icon.name.toLowerCase()) || topBrandNames.includes(slug.toLowerCase());
         if (isTop) {
             topSlugs.push({ slug, icon });
@@ -64,7 +66,8 @@ function generateSitemaps() {
     // Helper for image sitemap url entries
     function makeUrlEntry(slug, icon, priority = '0.8', changefreq = 'monthly') {
         const title = escHtml(`${icon.name} Logo SVG`);
-        const imgUrl = `${SITE_URL}${icon.variants.default}`;
+        const mainVar = icon.variants.original || icon.variants.default || Object.values(icon.variants)[0];
+        const imgUrl = `${SITE_URL}${mainVar}`;
         return [
             '  <url>',
             `    <loc>${SITE_URL}/icon/${slug}/</loc>`,
@@ -152,7 +155,7 @@ function generateLlmstxt() {
         '',
         '# Collection Overview',
         'title: Brands by Reicon.dev',
-        'description: A collection of ' + slugs.length + ' free SVG brand icons available in default, brand, black, and white variants.',
+        'description: A collection of ' + slugs.length + ' free SVG brand icons available for download.',
         'website: https://brands.reicon.dev',
         'total_icons: ' + slugs.length,
         '',
@@ -209,7 +212,7 @@ function generateBrandsIndex() {
         '',
         'Total icons: ' + slugs.length,
         'Format: SVG',
-        'Variants: default, brand, black, white',
+        'Variants: default',
         'Source: https://brands.reicon.dev',
         '',
         '## Icon List',

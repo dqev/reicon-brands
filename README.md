@@ -8,8 +8,7 @@
 <h1 align="center">Brands by Reicon.dev</h1>
 
 <p align="center">
-  <strong>4,900+ free SVG brand icons</strong> — open-source logo icons with multiple color variants.<br>
-  Default · Brand · Black · White — every icon, every variant, ready to download.
+  <strong>4,900+ free SVG brand icons</strong> — open-source logo icons ready to download.
 </p>
 
 <p align="center">
@@ -22,11 +21,9 @@
 ## Features
 
 - **4,909 brand icons** — from Adobe to Zyte, Google to GitHub
-- **4 variants each** — `default`, `brand` (original color), `black`, `white`
 - **Color picker** — recolor any icon with a custom hex color
 - **Size presets** — download at 24, 64, 128, 256, or 512px
 - **Multiple formats** — SVG, PNG, WebP export
-- **Download all** — batch download all variants at once
 - **Dark/light mode** — automatic theme support
 - **Fully SEO-optimized** — each icon has its own standalone HTML page with JSON-LD schema, breadcrumbs, OG tags, and sitemap
 
@@ -44,8 +41,6 @@
 ├── icons/                  # SVG source files (organized by slug)
 │   ├── ace/
 │   │   ├── default.svg
-│   │   ├── black.svg
-│   │   ├── white.svg
 │   │   └── ...
 │   └── ...
 ├── database/               # JSON databases for icons, categories, stats

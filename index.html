@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free SVG Brand Logos & Vector Icons Library | Reicon</title>
     <meta name="description"
-        content="Search and download open-source SVG brand logos and vector icons. High-quality, scalable company logos available in official brand color, default, black, and white variants for web, mobile apps, and UI design.">
+        content="Search and download open-source SVG brand logos and vector icons. High-quality, scalable company logos for web, mobile apps, and UI design.">
     <meta name="keywords" content="svg brand logos, vector company logos, free logo icons, brand icons library, tech logo svgs, vector brand assets, download brand svgs">
     <link rel="canonical" href="https://brands.reicon.dev/">
 
@@ -26,7 +26,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Free SVG Brand Logos & Vector Icons Library | Reicon">
     <meta property="og:description"
-        content="Search and download open-source SVG brand logos and vector icons in default, brand color, black, and white variants.">
+        content="Search and download open-source SVG brand logos and vector icons.">
     <meta property="og:url" content="https://brands.reicon.dev/">
     <meta property="og:site_name" content="Brands by Reicon.dev">
     <meta property="og:image" content="https://brands.reicon.dev/favicon/og-image.png">
@@ -36,7 +36,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Free SVG Brand Logos & Vector Icons Library | Reicon">
     <meta name="twitter:description"
-        content="Search and download open-source SVG brand logos and vector icons in default, brand color, black, and white variants.">
+        content="Search and download open-source SVG brand logos and vector icons.">
     <meta name="twitter:image" content="https://brands.reicon.dev/favicon/og-image.png">
 
     <script type="application/ld+json">
@@ -44,7 +44,7 @@
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": "Free SVG Brand Logos & Vector Icons Library",
-        "description": "Open-source collection of SVG brand logos and vector icons in default, brand, black, and white variants.",
+        "description": "Open-source collection of SVG brand logos and vector icons.",
         "url": "https://brands.reicon.dev/",
         "about": {
             "@type": "Thing",
@@ -289,16 +289,21 @@
         }
 
         .search-shortcut-badge {
-            font-size: 9px;
-            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 500;
             color: var(--body-muted);
-            background-color: var(--border);
-            padding: 2px 5px;
-            border-radius: 4px;
+            background: var(--card-bg);
+            padding: 3px 7px;
+            border-radius: 6px;
             user-select: none;
             pointer-events: none;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.03em;
             white-space: nowrap;
+            line-height: 1;
+            flex-shrink: 0;
         }
 
         /* ── Grid Layout ── */
@@ -615,8 +620,10 @@
 
         .preview-canvas-image {
             position: absolute;
-            width: 64px;
-            height: 64px;
+            width: 80px;
+            height: 80px;
+            max-width: 70%;
+            max-height: 70%;
             object-fit: contain;
             transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 0;
@@ -1452,10 +1459,7 @@
                     <div class="drawer-visual-section">
                         <!-- Canvas containing absolute positioned elements to prevent variant blinks -->
                         <div class="preview-canvas" id="previewCanvas">
-                            <img src="" class="preview-canvas-image" data-variant-img="default" alt="Default Preview">
-                            <img src="" class="preview-canvas-image" data-variant-img="brand" alt="Brand Preview">
-                            <img src="" class="preview-canvas-image" data-variant-img="black" alt="Black Preview">
-                            <img src="" class="preview-canvas-image" data-variant-img="white" alt="White Preview">
+                            <img src="" class="preview-canvas-image active" data-variant-img="original" alt="Default Preview">
 
                             <!-- Canvas background helpers -->
                             <div class="canvas-bg-toggle">
@@ -1467,10 +1471,6 @@
                             </div>
                         </div>
 
-                        <!-- Variant choices segmented horizontal layout with dynamic slider -->
-                        <div class="variant-picker" id="variantPicker">
-                            <div class="variant-slider-indicator" id="variantSliderIndicator"></div>
-                        </div>
                     </div>
 
                     <!-- Right detailed info table & action copy buttons -->
@@ -1573,7 +1573,7 @@
         let filteredIcons = [];
         let activeCategory = 'All';
         let currentlySelectedIcon = null;
-        let selectedVariantKey = 'default';
+        let selectedVariantKey = 'original';
 
         let currentRenderIndex = 0;
         const RENDER_CHUNK_SIZE = 80;
@@ -1595,6 +1595,7 @@
         const previewCanvas = document.getElementById('previewCanvas');
         const variantPicker = document.getElementById('variantPicker');
         const variantSliderIndicator = document.getElementById('variantSliderIndicator');
+
 
         const drawerBrandTitle = document.getElementById('drawerBrandTitle');
         const drawerCollectionBadge = document.getElementById('drawerCollectionBadge');
@@ -1967,7 +1968,7 @@
             const img = document.createElement('img');
             img.className = 'project-card-image';
 
-            const activePath = icon.variants.default;
+            const activePath = icon.variants.original;
             img.src = '.' + activePath;
             img.alt = `${icon.name}`;
             img.loading = 'lazy';
@@ -2001,13 +2002,13 @@
             card.appendChild(info);
 
             card.addEventListener('click', () => {
-                const slug = icon.variants.default.split('/')[2];
+                const slug = icon.variants.original.split('/')[2];
                 window.location.href = `/icon/${slug}/`;
             });
             card.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    const slug = icon.variants.default.split('/')[2];
+                    const slug = icon.variants.original.split('/')[2];
                     window.location.href = `/icon/${slug}/`;
                 }
             });
@@ -2018,7 +2019,7 @@
         // Open details bottom drawer
         function openIconDetails(icon) {
             currentlySelectedIcon = icon;
-            selectedVariantKey = 'default';
+            selectedVariantKey = 'original';
 
             const singleHex = Array.isArray(icon.hex) ? icon.hex[0] : icon.hex;
 
@@ -2048,97 +2049,17 @@
                 });
             }
 
-            // Pre-load all available image paths stacked to prevent blinking transitions
-            const variantKeys = ['default', 'brand', 'black', 'white'];
-            variantKeys.forEach(vKey => {
-                const imgEl = previewCanvas.querySelector(`[data-variant-img="${vKey}"]`);
-                const hasVariant = icon.variants && icon.variants[vKey];
-
-                if (hasVariant) {
-                    imgEl.src = '.' + icon.variants[vKey];
-                    imgEl.style.display = 'block';
-                } else {
-                    imgEl.src = '';
-                    imgEl.style.display = 'none';
-                }
-            });
-
-            // Variant Buttons segmented builder
-            const oldBtns = variantPicker.querySelectorAll('.variant-btn');
-            oldBtns.forEach(b => b.remove());
-
-            variantKeys.forEach(vKey => {
-                const btn = document.createElement('button');
-                btn.className = 'variant-btn';
-                btn.textContent = vKey;
-
-                const hasVariant = icon.variants && icon.variants[vKey];
-
-                if (hasVariant) {
-                    btn.addEventListener('click', (e) => selectVariant(vKey, e.currentTarget));
-                    if (vKey === selectedVariantKey) {
-                        btn.classList.add('active');
-                    }
-                } else {
-                    btn.classList.add('disabled');
-                    btn.title = "Variant unavailable";
-                }
-
-                variantPicker.appendChild(btn);
-            });
+            // Load default variant preview
+            const imgEl = previewCanvas.querySelector('[data-variant-img="original"]');
+            if (icon.variants && icon.variants.original) {
+                imgEl.src = '.' + icon.variants.original;
+                imgEl.style.display = 'block';
+            }
 
             // Trigger open animation scale state
             drawerOverlay.classList.add('open');
             detailDrawer.classList.add('open');
             document.body.style.overflow = 'hidden';
-
-            // Wait brief moment for layout paint then position selector indicator slider backdrop
-            setTimeout(() => {
-                const activeBtn = variantPicker.querySelector('.variant-btn.active');
-                if (activeBtn) {
-                    positionSliderIndicator(activeBtn);
-                }
-            }, 60);
-
-            updateCanvasPreview();
-        }
-
-        // Segmented selector indicator layout positioning helper
-        function positionSliderIndicator(btnElement) {
-            variantSliderIndicator.style.width = `${btnElement.offsetWidth}px`;
-            variantSliderIndicator.style.transform = `translateX(${btnElement.offsetLeft - 3}px)`;
-        }
-
-        function selectVariant(vKey, btnElement) {
-            selectedVariantKey = vKey;
-
-            variantPicker.querySelectorAll('.variant-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.textContent === vKey);
-            });
-
-            if (btnElement) {
-                positionSliderIndicator(btnElement);
-            }
-
-            updateCanvasPreview();
-        }
-
-        function updateCanvasPreview() {
-            if (!currentlySelectedIcon) return;
-            const activePath = currentlySelectedIcon.variants[selectedVariantKey] || currentlySelectedIcon.variants.default;
-
-            // Toggle active opacity class state on absolute stack elements
-            const variantKeys = ['default', 'brand', 'black', 'white'];
-            variantKeys.forEach(vKey => {
-                const imgEl = previewCanvas.querySelector(`[data-variant-img="${vKey}"]`);
-                if (vKey === selectedVariantKey) {
-                    imgEl.classList.add('active');
-                } else {
-                    imgEl.classList.remove('active');
-                }
-            });
-
-            updateSvgCodeBlock(activePath);
         }
 
         // Mobile Categories Drawer Toggle Handlers
@@ -2245,8 +2166,8 @@
                     readmeContent += `Below is the metadata for each exported icon to help AI agents or developers use them correctly:\n\n`;
 
                     const fetchPromises = favIcons.map(async (icon) => {
-                        const slug = icon.variants.default.split('/')[2];
-                        const svgPath = '.' + icon.variants.default;
+                        const slug = icon.variants.original.split('/')[2];
+                        const svgPath = '.' + icon.variants.original;
 
                         try {
                             const res = await fetch(svgPath);
