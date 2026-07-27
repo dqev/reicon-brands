@@ -1854,21 +1854,12 @@
         function applyFilters() {
             const searchQuery = searchInput.value.toLowerCase().trim();
             const gridTitle = document.getElementById('gridTitle');
-            const sidebarCol = document.getElementById('sidebarCol');
 
             if (searchQuery === '') {
                 selectCategory(activeCategory);
-                if (sidebarCol) {
-                    sidebarCol.style.opacity = '1';
-                    sidebarCol.style.pointerEvents = 'auto';
-                }
             } else {
                 if (gridTitle) {
                     gridTitle.textContent = `Search results for "${searchQuery}"`;
-                }
-                if (sidebarCol) {
-                    sidebarCol.style.opacity = '0.4';
-                    sidebarCol.style.pointerEvents = 'none';
                 }
 
                 filteredIcons = iconsDatabase.filter(icon => {
