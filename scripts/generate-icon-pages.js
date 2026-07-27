@@ -1083,9 +1083,9 @@ function generatePage(slug, icon) {
             var blob = new Blob([recolored], { type: 'image/svg+xml;charset=utf-8' });
             activeBlobUrl = window.URL.createObjectURL(blob);
 
-            var img = previewEl.querySelector('[data-variant-img="main"]');
-            if (img) {
-                img.src = activeBlobUrl;
+            var activeImg = previewEl.querySelector('.preview-canvas-image.active') || previewEl.querySelector('.preview-canvas-image');
+            if (activeImg) {
+                activeImg.src = activeBlobUrl;
             }
         }
 
@@ -1141,6 +1141,7 @@ function generatePage(slug, icon) {
         function fetchSvgCode(path) {
             function processSvg(rawTxt) {
                 var cleaned = cleanSvg(rawTxt);
+                currentSvgText = cleaned;
                 svgCodeEl.textContent = cleaned;
                 initializeColors(cleaned);
             }
@@ -1158,7 +1159,12 @@ function generatePage(slug, icon) {
                 svgCache.set(path, cleaned);
                 processSvg(cleaned);
             }).catch(function () {
-                svgCodeEl.textContent = '<!-- SVG source unavailable -->\\n<svg src="' + path + '"></svg>';
+                svgCodeEl.textContent = '<!-- SVG source unavailable -->';
+                // Fallback: use pre-baked hex from iconData so color pickers still work in production
+                var fallbackHex = Array.isArray(iconData.hex) ? iconData.hex[0] : iconData.hex;
+                if (fallbackHex) {
+                    renderColorPickers(['#' + fallbackHex]);
+                }
             });
         }
 
@@ -1308,7 +1314,7 @@ function generatePage(slug, icon) {
 
         // ── Download (single) ──
         document.getElementById('btnDownload').addEventListener('click', function () {
-            var fname = getNameVariants(downloadBase) + '-default.' + selectedFormat;
+            var fname = getNameVariants(downloadBase) + '-' + selectedVariant + '.' + selectedFormat;
 
             if (selectedFormat === 'svg') {
                 var blob = new Blob([currentSvgText], { type: 'image/svg+xml;charset=utf-8' });
@@ -1317,30 +1323,42 @@ function generatePage(slug, icon) {
             } else {
                 svgToCanvas(currentSvgText, selectedSize, selectedFormat).then(function (blob) {
                     triggerDownload(fname, blob);
-                    showToast('Downloaded ' + fname);
-                }).catch(function () { showToast('Download failed'); });
+                    showToast('Downloaded ' + fname + ' (' + selectedSize + 'x' + selectedSize + ')');
+                }).catch(function () { showToast('Failed to generate ' + selectedFormat.toUpperCase()); });
             }
         });
 
         // ── Copy SVG Code ──
-        document.getElementById('btnCopySvg').addEventListener('click', function () {
-            var code = svgCodeEl.textContent;
-            if (!code || code.startsWith('Loading') || code.startsWith('<!-- SVG source unavailable')) {
-                var path = getDefaultPath();
-                fetchSvg(path).then(function (svg) { return copyToClipboard(svg); })
-                    .then(function () { showToast('Copied SVG code!'); })
-                    .catch(function () { showToast('Failed to copy'); });
-                return;
+        var copyCodeHeaderBtn = document.getElementById('btnCopyCodeHeader');
+        if (copyCodeHeaderBtn) {
+            copyCodeHeaderBtn.addEventListener('click', function () {
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(currentSvgText).then(function () { showToast('SVG Code copied!'); });
+                } else {
+                    showToast('SVG Code copied!');
+                }
+            });
+        }
+        document.getElementById('btnCopyCode').addEventListener('click', function () {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(currentSvgText).then(function () { showToast('SVG Code copied!'); });
+            } else {
+                showToast('SVG Code copied!');
             }
-            copyToClipboard(code).then(function () { showToast('Copied SVG code!'); })
-                .catch(function () { showToast('Failed to copy'); });
         });
 
         // ── Copy Path ──
         document.getElementById('btnCopyPath').addEventListener('click', function () {
-            var p = getDefaultPath();
-            copyToClipboard(p).then(function () { showToast('Copied path'); })
-                .catch(function () { showToast('Failed to copy path'); });
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = currentSvgText;
+            var pathEl = tempDiv.querySelector('path');
+            var pathD = pathEl ? pathEl.getAttribute('d') : '';
+            if (pathD) {
+                copyToClipboard(pathD).then(function () { showToast('Copied path!'); })
+                    .catch(function () { showToast('Failed to copy path'); });
+            } else {
+                showToast('No path found');
+            }
         });
 
         // ── Download All ──
@@ -1392,7 +1410,7 @@ function generatePage(slug, icon) {
         }
 
         // ── Init ──
-        fetchSvgCode(getDefaultPath());
+        fetchSvgCode(getVariantPath('original'));
     </script>
 </body>
 </html>`;

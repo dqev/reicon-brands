@@ -1070,7 +1070,7 @@ def build_page_html(slug, icon):
             }}
             svgCodeEl.textContent = 'Loading...';
             fetch(path).then(function (r) {{
-                if (!r.ok) throw new Error();
+                if (!r.ok) throw new Error('HTTP ' + r.status);
                 return r.text();
             }}).then(function (txt) {{
                 var cleaned = cleanSvg(txt);
@@ -1078,6 +1078,11 @@ def build_page_html(slug, icon):
                 processSvg(cleaned);
             }}).catch(function () {{
                 svgCodeEl.textContent = '<!-- SVG source unavailable -->';
+                // Fallback: use pre-baked hex from iconData so color pickers still work in production
+                var fallbackHex = Array.isArray(iconData.hex) ? iconData.hex[0] : iconData.hex;
+                if (fallbackHex) {{
+                    renderColorPickers(['#' + fallbackHex]);
+                }}
             }});
         }}
 
