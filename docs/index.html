@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docs – Brands by Reicon.dev</title>
+    <meta name="description" content="Usage guidelines, trademark information, icon credits, and removal requests for the Brands icon library by Reicon.dev.">
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: dark;
+            --heading: #fff;
+            --body: #e4e4e7;
+            --body-muted: rgba(255,255,255,0.5);
+            --background: #0e0e10;
+            --card-bg: #181818;
+            --card-hover-bg: #222225;
+            --border: rgba(255,255,255,0.08);
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --duration-smooth: .15s;
+            --ease-smooth: cubic-bezier(.19,1,.22,1);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { min-height: 100%; color: var(--body); background: var(--background); }
+        body {
+            font-family: var(--font-primary);
+            font-size: 15px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--heading); }
+        .page-wrap {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 20px 80px;
+        }
+        @media (max-width: 600px) {
+            .page-wrap { padding: 32px 16px 60px; }
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--body-muted);
+            text-decoration: none;
+            margin-bottom: 32px;
+            transition: color var(--duration-smooth) var(--ease-smooth);
+        }
+        .back-link:hover { color: var(--heading); }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--heading);
+            letter-spacing: -0.3px;
+            margin-bottom: 8px;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 22px; }
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--body-muted);
+            margin-bottom: 40px;
+        }
+
+        section { margin-bottom: 40px; }
+        h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--heading);
+            margin-bottom: 12px;
+            letter-spacing: -0.2px;
+        }
+        p { margin-bottom: 12px; }
+        ul { padding-left: 20px; margin-bottom: 12px; }
+        li { margin-bottom: 6px; }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin-bottom: 16px;
+        }
+        @media (max-width: 600px) {
+            .card { padding: 16px; }
+        }
+
+        .card h3 {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--heading);
+            margin-bottom: 8px;
+        }
+        .card p, .card li { font-size: 14px; }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 40px 0;
+        }
+
+        .footer-note {
+            font-size: 13px;
+            color: var(--body-muted);
+            text-align: center;
+            margin-top: 48px;
+        }
+        .footer-note a { color: var(--body-muted); text-decoration: underline; }
+        .footer-note a:hover { color: var(--heading); }
+    </style>
+</head>
+<body>
+    <div class="page-wrap">
+        <a href="/" class="back-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m7-7l-7 7 7 7"/></svg>
+            Back to brands
+        </a>
+
+        <h1>Docs</h1>
+        <p class="subtitle">Usage guidelines, trademark notice, icon credits, and how to request removal.</p>
+
+        <section>
+            <h2>How these icons are sourced</h2>
+            <p>Each SVG icon in this library is sourced from the official brand&rsquo;s website or press kit. Where possible we link back to the brand&rsquo;s own asset page so you can verify the latest version. We do not create or modify brand logos — we simply collect and organise what is publicly available.</p>
+        </section>
+
+        <section>
+            <h2>Trademark notice</h2>
+            <p>All brand names, logos, and trademarks are the property of their respective owners. The icons in this library are provided as reference assets for identification purposes only. Use of a logo does not imply endorsement by or affiliation with the brand owner.</p>
+            <p>If you are a brand owner and would like your logo removed, please see the removal section below.</p>
+        </section>
+
+        <section>
+            <h2>Usage</h2>
+            <div class="card">
+                <h3>Do I need permission to use a brand logo?</h3>
+                <p>Yes, in most cases. Brand logos are trademarked assets. You should check the brand&rsquo;s own brand guidelines or contact them directly before using their logo, especially for commercial purposes. This library does not grant you any rights to use the logos.</p>
+            </div>
+            <div class="card">
+                <h3>Can I use these icons in my app or website?</h3>
+                <p>It depends on the brand and your use case. Some brands allow the use of their logo for reference or attribution purposes (e.g. &ldquo;Built with X&rdquo; or a partner badge). Others require written permission. When in doubt, reach out to the brand.</p>
+            </div>
+            <div class="card">
+                <h3>What about open-source projects?</h3>
+                <p>Even for open-source projects, brand logos are typically governed by trademark law. A permissive open-source license on the code does not automatically cover the use of a brand&rsquo;s logo. Always check the brand&rsquo;s policy.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Removal requests</h2>
+            <p>If you are a brand owner or representative and would like your logo removed from this library, please open an issue on GitHub. We review and process removal requests promptly.</p>
+            <div class="card">
+                <p style="margin-bottom:0">
+                    <a href="https://github.com/dqev/reicon-brands/issues" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-weight:500;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                        Open a removal issue on GitHub
+                    </a>
+                </p>
+            </div>
+            <p>We aim to respond within a few days. You can also reach out via the contact channels listed on the Reicon.dev website.</p>
+        </section>
+
+        <section>
+            <h2>Credit</h2>
+            <p>This library is maintained by <a href="https://reicon.dev" target="_blank" rel="noopener noreferrer">Reicon.dev</a>. Most icons are sourced directly from brand press kits, official brand asset pages, or open-source icon collections that distribute under permissive terms.</p>
+            <p>If you use this library, no attribution to Reicon.dev is required — we are simply a curator. However, we encourage you to respect the original brand&rsquo;s guidelines and give credit where the brand asks for it.</p>
+        </section>
+
+        <section>
+            <h2>Accuracy</h2>
+            <p>We try to keep icons up to date, but brands refresh their identities over time. If you notice an outdated logo or incorrect brand colour, feel free to open an issue or pull request on GitHub.</p>
+        </section>
+
+        <hr>
+
+        <div class="footer-note">
+            <a href="/">Brands by Reicon.dev</a> &middot; <a href="https://github.com/dqev/reicon-brands" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+    </div>
+</body>
+</html>
