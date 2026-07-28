@@ -9,6 +9,39 @@ const SITE_NAME = 'Brands by Reicon.dev';
 
 const icons = JSON.parse(fs.readFileSync(ICONS_JSON, 'utf-8'));
 
+// Build unique slug set and category map
+const slugSet = new Set();
+const slugToIcon = {};
+const catToSlugs = {};
+for (const icon of icons) {
+    const mainVar = icon.variants.original || icon.variants.default || Object.values(icon.variants)[0];
+    const slug = mainVar.split('/')[2];
+    if (!slugSet.has(slug)) {
+        slugSet.add(slug);
+        slugToIcon[slug] = icon;
+        (icon.categories || []).forEach(cat => {
+            if (!catToSlugs[cat]) catToSlugs[cat] = [];
+            catToSlugs[cat].push({ slug, name: icon.name });
+        });
+    }
+}
+const TOTAL_BRAND_COUNT = slugSet.size;
+
+function pickRelated(slug, icon, count = 6) {
+    const candidates = [];
+    const seen = new Set([slug]);
+    for (const cat of (icon.categories || [])) {
+        const entries = catToSlugs[cat] || [];
+        for (const entry of entries) {
+            if (!seen.has(entry.slug)) {
+                seen.add(entry.slug);
+                candidates.push(entry);
+            }
+        }
+    }
+    return candidates.slice(0, count);
+}
+
 function escHtml(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 }
@@ -17,10 +50,14 @@ function escJs(str) {
     return String(str).replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$/g, '\\$').replace(/'/g, "\\'");
 }
 
-function getDescription(name, categories, hexDisplay) {
-    const catStr = categories && categories.length > 0 ? categories.join(', ') : 'brand asset';
-    const colorInfo = hexDisplay && hexDisplay !== 'N/A' ? ` in official brand color (${hexDisplay})` : '';
-    return `Download the official ${name} logo in SVG, vector, and high-resolution PNG formats for free. Scalable ${name} ${catStr} icon available${colorInfo} for websites, apps, and design projects.`;
+function getDescription(name) {
+    const formats = 'SVG, PNG';
+    const sizes = '24px–512px';
+    let desc = `Download the ${name} icon in ${formats} (${sizes}), and vector formats. Free for personal and commercial use. Part of Reicon's library of ${TOTAL_BRAND_COUNT.toLocaleString()} brand icons.`;
+    if (desc.length > 160) {
+        desc = `Download the ${name} icon in ${formats} and vector formats. Free for personal and commercial use. Part of Reicon's library of ${TOTAL_BRAND_COUNT.toLocaleString()} brand icons.`;
+    }
+    return desc;
 }
 
 function generatePage(slug, icon) {
@@ -28,14 +65,14 @@ function generatePage(slug, icon) {
     const singleHex = Array.isArray(icon.hex) ? icon.hex[0] : icon.hex;
     const hexDisplay = singleHex ? `#${singleHex.toUpperCase()}` : 'N/A';
     const hexColor = singleHex ? `#${singleHex}` : 'transparent';
-    const description = getDescription(name, icon.categories, hexDisplay);
     const categories = icon.categories || [];
     const collection = icon.collection || 'brands';
     const url = icon.url || '';
     const displayUrl = url.replace(/^https?:\/\/(www\.)?/, '');
     const defaultSvgPath = icon.variants.original || icon.variants.default || Object.values(icon.variants)[0];
-    const hasTextVariant = icon.variants && !!icon.variants.text;
-    const variantKeys = hasTextVariant ? ['original', 'text'] : ['original'];
+    const variantKeys = icon.variants ? Object.keys(icon.variants) : [];
+    const description = getDescription(name);
+    const related = pickRelated(slug, icon, 6);
 
     const breadcrumbSchema = JSON.stringify({
         "@context": "https://schema.org",
@@ -46,27 +83,70 @@ function generatePage(slug, icon) {
         ]
     });
 
+    const svgPath = `${SITE_URL}${defaultSvgPath}`;
+    const svgStat = fs.existsSync(path.join(__dirname, '..', defaultSvgPath.slice(1))) ? fs.statSync(path.join(__dirname, '..', defaultSvgPath.slice(1))) : null;
+    const dateModified = svgStat ? svgStat.mtime.toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
     const imageSchema = JSON.stringify({
         "@context": "https://schema.org",
         "@type": "ImageObject",
-        "contentUrl": `${SITE_URL}${defaultSvgPath}`,
+        "contentUrl": svgPath,
         "name": `${name} Logo SVG & Vector Icon`,
         "description": `Official ${name} logo SVG vector download in high quality PNG.`,
         "encodingFormat": "image/svg+xml",
-        "keywords": `${name} logo, ${name} svg, ${name} png, ${name} vector, ${name} brand icon, ${name} download`
+        "dateModified": dateModified
     });
 
-    const pageTitle = `${name} Logo SVG, PNG & Vector Icon Free Download | Reicon`;
-    const ogTitle = `${name} Logo SVG, PNG & Vector Icon Free Download`;
-    const ogDescription = `Download free ${name} logo in SVG, PNG, and vector formats. Official high-res ${name} brand icon.`;
+    const faqSchema = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": `Is the ${name} icon free to use?`,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": `Yes, the ${name} icon is free to download and use for personal and commercial projects as part of the Reicon brand icon library.`
+                }
+            },
+            {
+                "@type": "Question",
+                "name": `What formats are available for the ${name} icon?`,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": `The ${name} icon is available in SVG and PNG formats, with vector formats for scalable use in websites, apps, and design projects.`
+                }
+            },
+            {
+                "@type": "Question",
+                "name": `Can I use the ${name} icon for commercial projects?`,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": `Yes, the ${name} icon can be used in commercial projects free of charge. No attribution is required.`
+                }
+            },
+            {
+                "@type": "Question",
+                "name": `What is the ${name} brand color?`,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": icon.hex ? `The ${name} brand color${Array.isArray(icon.hex) && icon.hex.length > 1 ? 's are' : ' is'} ${Array.isArray(icon.hex) ? icon.hex.map(h => '#' + h.toUpperCase()).join(', ') : '#' + icon.hex.toUpperCase()}.` : `The ${name} brand color is not specified in our database.`
+                }
+            }
+        ]
+    });
+
+    const pageTitleBase = `${name} Icon - Free SVG, PNG & Vector Download | Reicon`;
+    const pageTitle = pageTitleBase.length > 60 ? pageTitleBase.slice(0, 57) + '...' : pageTitleBase;
+    const ogTitle = pageTitle;
+    const ogDescription = getDescription(name);
 
     const variantImgTags = variantKeys.map(vKey => {
         const vPath = icon.variants && icon.variants[vKey];
         return `<img src="${vPath || ''}" class="preview-canvas-image${vKey === 'original' ? ' active' : ''}" data-variant-img="${vKey}" alt="${escHtml(name)} logo ${vKey} variant SVG" crossorigin="anonymous">`;
     }).join('\n                        ');
 
-    const variantBtnTags = hasTextVariant ? variantKeys.map(vKey => {
-        const label = vKey === 'original' ? 'Original' : 'Text Wordmark';
+    const variantBtnTags = variantKeys.length > 1 ? variantKeys.map(vKey => {
+        const label = vKey === 'original' ? 'Original' : vKey.charAt(0).toUpperCase() + vKey.slice(1).replace(/-/g, ' ');
         return `<button class="variant-btn${vKey === 'original' ? ' active' : ''}" data-variant="${vKey}">${label}</button>`;
     }).join('\n                        ') : '';
 
@@ -82,7 +162,6 @@ function generatePage(slug, icon) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${escHtml(pageTitle)}</title>
     <meta name="description" content="${escHtml(description)}">
-    <meta name="keywords" content="${escHtml(name)} logo, ${escHtml(name)} svg, ${escHtml(name)} png, ${escHtml(name)} vector, ${escHtml(name)} brand icon, download ${escHtml(name)} logo">
     <link rel="canonical" href="${SITE_URL}/icon/${slug}/">
 
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
@@ -112,6 +191,7 @@ function generatePage(slug, icon) {
 
     <script type="application/ld+json">${breadcrumbSchema}</script>
     <script type="application/ld+json">${imageSchema}</script>
+    <script type="application/ld+json">${faqSchema}</script>
 
     <style>
         :root {
@@ -309,10 +389,10 @@ function generatePage(slug, icon) {
         }
         .preview-canvas-image {
             position: absolute;
-            width: 80px;
-            height: 80px;
-            max-width: 70%;
-            max-height: 70%;
+            max-width: 75%;
+            max-height: 75%;
+            width: auto;
+            height: auto;
             object-fit: contain;
             transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 0;
@@ -465,17 +545,17 @@ function generatePage(slug, icon) {
         .code-card-outer {
             background: var(--card-bg);
             border-radius: 16px;
-            padding: 14px 16px 16px;
+            padding: 4px 8px 8px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 0px;
             width: 100%;
         }
-        .code-card-header {
+        .code-card-header {                      
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 2px;
+            padding: 0 10px;
         }
         .code-card-title {
             font-size: 10px;
@@ -525,14 +605,16 @@ function generatePage(slug, icon) {
         .token-val { color: #4ade80; }
 
         .actions-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            flex-wrap: wrap;
             gap: 8px;
         }
-        .action-button-primary { grid-column: span 2; }
-        @media (min-width: 580px) {
-            .actions-grid { grid-template-columns: repeat(4, 1fr); }
-            .action-button-primary { grid-column: span 1; }
+        .action-button {
+            flex: 1;
+            min-width: 100px;
+        }
+        .action-button-primary {
+            flex: 2;
         }
         .action-button {
             display: inline-flex;
@@ -707,12 +789,136 @@ function generatePage(slug, icon) {
         .toast-notify svg { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.5); transform: scale(0.5) rotate(-45deg); }
         .toast-notify.show svg { transform: scale(1) rotate(0deg); }
 
+        .related-section {
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .related-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--heading);
+            margin-bottom: 20px;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            width: 100%;
+        }
+        @media (min-width: 600px) {
+            .related-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+            }
+        }
+        @media (min-width: 768px) {
+            .related-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+        .project-card {
+            position: relative;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            height: 155px;
+            padding: 20px 12px 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color var(--duration-smooth) var(--ease-smooth), transform var(--duration-smooth) var(--ease-smooth);
+            overflow: hidden;
+            min-width: 0;
+            text-decoration: none;
+        }
+        .project-card:hover {
+            background-color: var(--card-hover-bg);
+        }
+        .project-card:active {
+            transform: scale(0.97);
+        }
+        @media (min-width: 600px) {
+            .project-card {
+                height: 175px;
+                padding: 24px 16px 20px;
+            }
+        }
+        .project-card-icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            background-color: transparent;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            flex-shrink: 0;
+        }
+        @media (min-width: 600px) {
+            .project-card-icon-container {
+                width: 56px;
+                height: 56px;
+                margin-bottom: 16px;
+            }
+        }
+        .project-card-image {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+        @media (min-width: 600px) {
+            .project-card-image {
+                width: 36px;
+                height: 36px;
+            }
+        }
+        .project-card-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            width: 100%;
+            margin-top: auto;
+            min-width: 0;
+        }
+        .project-card-info h3 {
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--heading);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+        @media (min-width: 600px) {
+            .project-card-info h3 {
+                font-size: 13px;
+            }
+        }
+        .project-card-desc {
+            font-size: 10px;
+            color: var(--body-muted);
+            line-height: 1.4;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+        @media (min-width: 600px) {
+            .project-card-desc {
+                font-size: 10.5px;
+            }
+        }
         @media (max-width: 480px) {
             .brand-title { font-size: 18px; }
             .preview-canvas { min-height: 180px; }
-            .preview-canvas-image { width: 64px; height: 64px; }
+            .preview-canvas-image { max-width: 65%; max-height: 65%; }
             .code-container { max-height: 140px; }
             .page-layout { gap: 20px; }
+            .related-grid { gap: 8px; }
         }
     </style>
 </head>
@@ -754,7 +960,7 @@ function generatePage(slug, icon) {
                             <button class="bg-toggle-btn btn-dark" id="btnDarkBg" title="Dark background"></button>
                         </div>
                     </div>
-                    ${hasTextVariant ? `
+                    ${variantKeys.length > 1 ? `
                     <div class="variant-picker" id="variantPicker" style="margin-top: 12px;">
                         <div class="variant-slider-indicator" id="variantSliderIndicator"></div>
                         ${variantBtnTags}
@@ -837,10 +1043,10 @@ function generatePage(slug, icon) {
                             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                             <span id="favLabelSpan">Favourite</span>
                         </button>
-                        <button class="action-button" id="btnDownloadAll" title="Download all variants">
+                        ${variantKeys.length > 1 ? `<button class="action-button" id="btnDownloadAll" title="Download all variants">
                             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                             <span>Download All</span>
-                        </button>
+                        </button>` : ''}
                     </div>
 
                     <div class="code-card-outer">
@@ -856,6 +1062,27 @@ function generatePage(slug, icon) {
                     </div>
                 </div>
             </div>
+            ${related.length > 0 ? `
+            <div class="related-section">
+                <h2 class="related-title">Related Brand Icons</h2>
+                <div class="related-grid">
+                    ${related.map(r => {
+        const relIcon = slugToIcon[r.slug];
+        const imgSrc = relIcon ? (relIcon.variants.original || relIcon.variants.default || Object.values(relIcon.variants)[0]) : '';
+        const categories = relIcon && relIcon.categories && relIcon.categories.length > 0 ? relIcon.categories.join(', ') : 'Brand icon';
+        return `
+                    <a href="/icon/${r.slug}/" class="project-card icon-card">
+                        <div class="project-card-icon-container">
+                            <img src="${imgSrc}" alt="${escHtml(r.name)}" class="project-card-image" loading="lazy" crossorigin="anonymous">
+                        </div>
+                        <div class="project-card-info">
+                            <h3>${escHtml(r.name)}</h3>
+                            <p class="project-card-desc">${escHtml(categories)}</p>
+                        </div>
+                    </a>`;
+    }).join('\n                    ')}
+                </div>
+            </div>` : ''}
         </div>
     </div>
 
@@ -1188,9 +1415,11 @@ function generatePage(slug, icon) {
 
         function svgToCanvas(svgText, size, format) {
             return new Promise(function (resolve, reject) {
+                var dpr = window.devicePixelRatio || 1;
+                var renderSize = Math.max(size, 256) * dpr;
                 var canvas = document.createElement('canvas');
-                canvas.width = size;
-                canvas.height = size;
+                canvas.width = renderSize;
+                canvas.height = renderSize;
                 var ctx = canvas.getContext('2d');
                 ctx.imageSmoothingEnabled = true;
                 ctx.imageSmoothingQuality = 'high';
@@ -1198,11 +1427,11 @@ function generatePage(slug, icon) {
                 var blob = new Blob([svgText], { type: 'image/svg+xml;charset=utf-8' });
                 var url = window.URL.createObjectURL(blob);
                 img.onload = function () {
-                    ctx.clearRect(0, 0, size, size);
-                    var s = Math.min(size / img.width, size / img.height);
+                    ctx.clearRect(0, 0, renderSize, renderSize);
+                    var s = Math.min(renderSize / img.width, renderSize / img.height);
                     var w = Math.round(img.width * s);
                     var h = Math.round(img.height * s);
-                    ctx.drawImage(img, Math.round((size - w) / 2), Math.round((size - h) / 2), w, h);
+                    ctx.drawImage(img, Math.round((renderSize - w) / 2), Math.round((renderSize - h) / 2), w, h);
                     window.URL.revokeObjectURL(url);
                     if (format === 'png') {
                         canvas.toBlob(function (b) { resolve(b); }, 'image/png');
@@ -1365,26 +1594,29 @@ function generatePage(slug, icon) {
         });
 
         // ── Download All ──
-        document.getElementById('btnDownloadAll').addEventListener('click', function () {
-            var variantKeys = Object.keys(iconData.variants);
-            if (variantKeys.length === 0) {
-                showToast('No variants available');
-                return;
-            }
-            var downloads = variantKeys.map(function (vKey) {
-                var path = iconData.variants[vKey];
-                return fetchSvg(path).then(function (svg) {
-                    var fname = getNameVariants(downloadBase) + '-' + vKey + '.svg';
-                    var blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
-                    triggerDownload(fname, blob);
+        var downloadAllBtn = document.getElementById('btnDownloadAll');
+        if (downloadAllBtn) {
+            downloadAllBtn.addEventListener('click', function () {
+                var vKeys = Object.keys(iconData.variants);
+                if (vKeys.length === 0) {
+                    showToast('No variants available');
+                    return;
+                }
+                var downloads = vKeys.map(function (vKey) {
+                    var path = iconData.variants[vKey];
+                    return fetchSvg(path).then(function (svg) {
+                        var fname = getNameVariants(downloadBase) + '-' + vKey + '.svg';
+                        var blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+                        triggerDownload(fname, blob);
+                    });
+                });
+                Promise.all(downloads).then(function () {
+                    showToast('Downloaded ' + vKeys.length + ' variant(s)');
+                }).catch(function () {
+                    showToast('Download failed');
                 });
             });
-            Promise.all(downloads).then(function () {
-                showToast('Downloaded ' + variantKeys.length + ' variant(s)');
-            }).catch(function () {
-                showToast('Download failed');
-            });
-        });
+        }
 
         // ── Favourite ──
         var favBtn = document.getElementById('btnFavourite');
@@ -1426,7 +1658,7 @@ function generatePage(slug, icon) {
 
 // Main generation
 console.log('Generating icon pages with advanced features...');
-console.log('Total icons: ' + icons.length);
+console.log('Total icons: ' + icons.length + ' (unique pages: ' + TOTAL_BRAND_COUNT + ')');
 
 if (!fs.existsSync(OUTPUT_DIR)) {
     fs.mkdirSync(OUTPUT_DIR);
@@ -1434,6 +1666,8 @@ if (!fs.existsSync(OUTPUT_DIR)) {
 
 var count = 0;
 var errors = [];
+var missingColor = [];
+var missingCategory = [];
 
 for (var i = 0; i < icons.length; i++) {
     try {
@@ -1444,6 +1678,17 @@ for (var i = 0; i < icons.length; i++) {
         if (!slug) {
             errors.push('Missing slug for: ' + icon.name);
             continue;
+        }
+
+        // Track missing fields (first time we encounter each slug)
+        if (slugSet.has(slug)) {
+            slugSet.delete(slug);
+            if (!icon.hex || (Array.isArray(icon.hex) && icon.hex.length === 0)) {
+                missingColor.push(icon.name + ' (' + slug + ')');
+            }
+            if (!icon.categories || icon.categories.length === 0) {
+                missingCategory.push(icon.name + ' (' + slug + ')');
+            }
         }
 
         var slugDir = path.join(OUTPUT_DIR, slug);
@@ -1462,7 +1707,19 @@ for (var i = 0; i < icons.length; i++) {
 
 console.log('');
 console.log('Done! Generated ' + count + ' icon pages.');
+
+if (missingColor.length > 0) {
+    console.warn('\n⚠ WARNING: ' + missingColor.length + ' brands missing color (hex) field:');
+    missingColor.slice(0, 20).forEach(function (e) { console.warn('  - ' + e); });
+    if (missingColor.length > 20) console.warn('  ... and ' + (missingColor.length - 20) + ' more');
+}
+if (missingCategory.length > 0) {
+    console.warn('\n⚠ WARNING: ' + missingCategory.length + ' brands missing category field:');
+    missingCategory.slice(0, 20).forEach(function (e) { console.warn('  - ' + e); });
+    if (missingCategory.length > 20) console.warn('  ... and ' + (missingCategory.length - 20) + ' more');
+}
+
 if (errors.length > 0) {
-    console.log('Errors: ' + errors.length);
+    console.log('\nErrors: ' + errors.length);
     errors.slice(0, 10).forEach(function (e) { console.log('  - ' + e); });
 }

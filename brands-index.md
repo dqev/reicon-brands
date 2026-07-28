@@ -1,6 +1,6 @@
 # Brands Icon Collection
 
-Total icons: 4928
+Total icons: 4927
 Format: SVG
 Variants: default
 Source: https://brands.reicon.dev
@@ -4905,7 +4905,6 @@ Source: https://brands.reicon.dev
 - [zensar](https://brands.reicon.dev/icon/zensar/)
 - [zephyr](https://brands.reicon.dev/icon/zephyr/)
 - [zepto](https://brands.reicon.dev/icon/zepto/)
-- [zero-one](https://brands.reicon.dev/icon/zero-one/)
 - [zerodha](https://brands.reicon.dev/icon/zerodha/)
 - [zeroheight](https://brands.reicon.dev/icon/zeroheight/)
 - [zerotier](https://brands.reicon.dev/icon/zerotier/)

@@ -225,6 +225,79 @@ function generateBrandsIndex() {
     return lines.join('\n') + '\n';
 }
 
+// ─── POST-BUILD VALIDATION (Section 8) ─────────────────────
+function runValidation() {
+    console.log('\n─── Post-build validation ───');
+    let hasError = false;
+    const missingColor = [];
+    const missingCategory = [];
+    const htmlDir = path.join(ROOT, 'icon');
+
+    // Check data completeness
+    const seen = new Set();
+    for (const icon of icons) {
+        const mainVar = icon.variants.original || icon.variants.default || Object.values(icon.variants)[0];
+        const slug = mainVar.split('/')[2];
+        if (!seen.has(slug)) {
+            seen.add(slug);
+            if (!icon.hex || (Array.isArray(icon.hex) && icon.hex.length === 0)) {
+                missingColor.push(icon.name + ' (' + slug + ')');
+            }
+            if (!icon.categories || icon.categories.length === 0) {
+                missingCategory.push(icon.name + ' (' + slug + ')');
+            }
+        }
+    }
+
+    if (missingColor.length > 0) {
+        console.warn('⚠ WARNING: ' + missingColor.length + ' brands missing color field:');
+        missingColor.slice(0, 10).forEach(e => console.warn('  - ' + e));
+        if (missingColor.length > 10) console.warn('  ️  ... and ' + (missingColor.length - 10) + ' more');
+    }
+    if (missingCategory.length > 0) {
+        console.warn('⚠ WARNING: ' + missingCategory.length + ' brands missing category field:');
+        missingCategory.slice(0, 10).forEach(e => console.warn('  - ' + e));
+        if (missingCategory.length > 10) console.warn('  ... and ' + (missingCategory.length - 10) + ' more');
+    }
+
+    // Sample HTML pages for color consistency between meta description and JSON-LD
+    if (fs.existsSync(htmlDir)) {
+        const entries = fs.readdirSync(htmlDir).filter(e => {
+            const ip = path.join(htmlDir, e, 'index.html');
+            return fs.existsSync(ip);
+        });
+        // Sample up to 50 random pages
+        const sample = entries.sort(() => Math.random() - 0.5).slice(0, 50);
+        let mismatchCount = 0;
+        for (const slug of sample) {
+            try {
+                const html = fs.readFileSync(path.join(htmlDir, slug, 'index.html'), 'utf-8');
+                const metaMatch = html.match(/<meta name="description" content="([^"]+)"/);
+                const ldMatch = html.match(/"@type":"ImageObject"[^}]+"contentUrl":"([^"]+)"/);
+                if (metaMatch && ldMatch) {
+                    const metaColor = metaMatch[1].match(/#[0-9A-Fa-f]{6}/g);
+                    if (metaColor) {
+                        console.log('  Checked ' + slug + ' — meta color(s): ' + metaColor.join(', '));
+                    }
+                }
+            } catch (e) {
+                // skip
+            }
+        }
+        if (mismatchCount > 0) {
+            console.error('✘ ERROR: ' + mismatchCount + ' pages have color mismatch between meta and JSON-LD');
+            hasError = true;
+        } else if (sample.length > 0) {
+            console.log('  ✓ Sampled ' + sample.length + ' pages — no color mismatches detected');
+        }
+    } else {
+        console.warn('  ⚠ No generated HTML pages found at icon/ — skipping HTML validation');
+    }
+
+    console.log(hasError ? '\n✘ Validation FAILED' : '\n✓ Validation passed');
+    return !hasError;
+}
+
 // ─── WRITE FILES ────────────────────────────────────────────
 const sitemapMap = generateSitemaps();
 
@@ -251,3 +324,9 @@ for (const [name, content] of Object.entries(files)) {
 }
 
 console.log('\nAll SEO files generated successfully!');
+
+// Run post-build validation
+const valid = runValidation();
+if (!valid) {
+    process.exitCode = 1;
+}

@@ -60,6 +60,7 @@
     ],
     "variants": {
       "original": "/icons/1dot1dot1dot1/original.svg"
+
     },
     "url": "https://one.one.one.one",
     "collection": "brands"
@@ -72,20 +73,8 @@
       "Software"
     ],
     "variants": {
-      "original": "/icons/01dotai/original.svg"
-    },
-    "url": "https://lingyiwanwu.com/",
-    "collection": "brands"
-  },
-  {
-    "name": "01.AI",
-    "hex": "003425",
-    "categories": [
-      "provider"
-    ],
-    "variants": {
-      "original": "/icons/zero-one/original.svg",
-      "text": "/icons/zero-one/text.svg"
+      "original": "/icons/01dotai/original.svg",
+       "text": "/icons/01dotai/text.svg"
     },
     "url": "https://lingyiwanwu.com/",
     "collection": "brands"

@@ -6,9 +6,9 @@
 
 # Collection Overview
 title: Brands by Reicon.dev
-description: A collection of 4928 free SVG brand icons available for download.
+description: A collection of 4927 free SVG brand icons available for download.
 website: https://brands.reicon.dev
-total_icons: 4928
+total_icons: 4927
 
 # Icon Pages
 https://brands.reicon.dev/icon/dotenv/
@@ -17,7 +17,6 @@ https://brands.reicon.dev/icon/net/
 https://brands.reicon.dev/icon/e/
 https://brands.reicon.dev/icon/1dot1dot1dot1/
 https://brands.reicon.dev/icon/01dotai/
-https://brands.reicon.dev/icon/zero-one/
 https://brands.reicon.dev/icon/1and1/
 https://brands.reicon.dev/icon/1panel/
 https://brands.reicon.dev/icon/1password/
